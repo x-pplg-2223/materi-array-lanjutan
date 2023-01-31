@@ -3,7 +3,7 @@
 ## Apa itu Array?
 Array adalah kumpulan atau tumpukan berbagai data. Cara menuliskan array yaitu dengan kurung siku ([]) dan elemen-elemen nya dipisah menggunakan tanda koma (,). Setiap elemen dari array memiliki indeks yang dimulai dari 0, 1, 2, dst. Kita dapat memanipulasi array dengan berbagai cara seperti menambahkan dan mengeluarkan elemen dalam array, menggabungkan array, atau bahkan menghapus seluruh elemen Array nya. Kita bisa memasukkan beberapa tipe data yang berbeda ke dalam Array bahkan memasukkan Array ke dalam Array.
 
-Array juga memiliki property **.length** seperti pada string yang berarti panjang dari sebuah array.
+Array juga memiliki property *.length* seperti pada string yang berarti panjang dari sebuah array.
 
 ```js
 var hobbies = ["coding", "cycling", "climbing", "skateboarding"] 
@@ -38,7 +38,7 @@ feelling.pop() // menghapus nilai pada elemen terakhir array
 
 Beberapa metode array ada yang mengembalikan nilai array lama yang sudah diperbarui (array lama di-update) dengan metode tersebut , dan ada pula metode array yang mengembalikan sebuah array baru dan tidak mengubah data pada array yang lama (array baru yang serupa dengan array lama). Sifat seperti ini disebut mutable atau immutable.
 
-### **.push()**
+### *.push()*
 *Push* adalah metode array untuk menambahkan nilai di belakang elemen terakhir di array. metode push menerima sebuah parameter yaitu nilai yang ingin kita tambahkan ke dalam array.
 
 ```js
@@ -49,7 +49,7 @@ console.log(numbers) // [0, 1, 2, 3]
 numbers.push(4, 5)
 console.log(numbers) // [0, 1, 2, 3, 4, 5] 
 ```
-### **.pop()**
+### *.pop()*
 *Pop* adalah kebalikan dari push yaitu menghapus nilai elemen paling terakhir dari sebuah array. metode Pop tidak menerima parameter apapun sehingga metode pop hanya bisa mengeluarkan satu elemen saja yaitu yang paling terakhir dari sebuah array.
 
 ```js 
@@ -58,7 +58,7 @@ numbers.pop()
 console.log(numbers) // [0, 1, 2, 3, 4] 
 ``` 
 
-### **.unshift()**
+### *.unshift()*
 *Unshift* yaitu menambahkan nilai pada index ke-0 sehingga elemen-elemen sebelumnya bergeser.
 
 ```js
@@ -67,8 +67,8 @@ numbers.unshift(-1)
 console.log(numbers) // [-1, 0, 1, 2, 3]
 ``` 
 
-### **.shift()**
-**Shift** kebalikan dari unshift yaitu menghapus nilai pada elemen terdepan dari sebuah array. metode Shift tidak menerima parameter apapun.
+### *.shift()*
+*Shift* kebalikan dari unshift yaitu menghapus nilai pada elemen terdepan dari sebuah array. metode Shift tidak menerima parameter apapun.
 
 ```js
 var numbers = [ 0, 1, 2, 3]
@@ -76,8 +76,8 @@ numbers.shift()
 console.log(numbers) // [1, 2, 3] 
 ``` 
 
-## **.sort()**
-**Sort** adalah metode untuk mengurutkan nilai pada array. Secara otomatis, sort akan mengurutkan secara ascending (dari rendah ke tinggi) dan diurutkan berdasarkan unicode dari karakter. Urutan unicode artinya ada karakter yang secara nilai lebih besar dibandingkan dengan karakter yang lainnya. contohnya adalah karakter "b" akan lebih besar daripada "a", karakter "c" lebih besar daripada karakter "b", dst.
+### *.sort()*
+*Sort* adalah metode untuk mengurutkan nilai pada array. Secara otomatis, sort akan mengurutkan secara ascending (dari rendah ke tinggi) dan diurutkan berdasarkan unicode dari karakter. Urutan unicode artinya ada karakter yang secara nilai lebih besar dibandingkan dengan karakter yang lainnya. contohnya adalah karakter "b" akan lebih besar daripada "a", karakter "c" lebih besar daripada karakter "b", dst.
 
 ```js
 var animals = ["kera", "gajah", "musang"] 
@@ -86,7 +86,7 @@ console.log(animals) // ["gajah", "kera", "musang"]
 ``` 
 
 ### *.slice()*
-**slice** adalah metode untuk mengambil irisan dari sebuah array. Metode slice bisa menerima satu atau dua parameter. Parameter pertama adalah nomer index pertama yang akan kita ambil sebagai irisan, sedangkan parameter kedua adalah nomer index terakhir yang ingin kita ambil sebagai irisan.
+*slice* adalah metode untuk mengambil irisan dari sebuah array. Metode slice bisa menerima satu atau dua parameter. Parameter pertama adalah nomer index pertama yang akan kita ambil sebagai irisan, sedangkan parameter kedua adalah nomer index terakhir yang ingin kita ambil sebagai irisan.
 
 ```js
 var angka = [0, 1, 2, 3]
