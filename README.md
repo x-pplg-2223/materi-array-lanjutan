@@ -5,7 +5,7 @@ Array adalah kumpulan atau tumpukan berbagai data. Cara menuliskan array yaitu d
 
 Array juga memiliki property **.length** seperti pada string yang berarti panjang dari sebuah array.
 
-```html
+```js
 var hobbies = ["coding", "cycling", "climbing", "skateboarding"] 
 console.log(hobbies) // [ 'coding', 'cycling', 'climbing', 'skateboarding' ]
 console.log(hobbies.length) // 4 
@@ -27,3 +27,25 @@ Berikut ini adalah beberapa metode atau built-in functions yang dimiliki oleh ti
 - slice: mengambil beberapa lapis data
 - splice: mengubah nilai array dengan menghapus dan/atau menambah nilai baru ke array
 - split: memecah string dan mengembalikan array sesuai dengan separator / pemisah yang didefinisikan
+
+Cara menggunakan metode array adalah dengan menggunakan tanda dot (.) contohnya sbb:
+
+```js
+var feeling = ["dag", "dig"]
+feeling.push("dug") // menambahkan nilai "dug" ke index paling belakang
+feelling.pop() // menghapus nilai pada elemen terakhir array
+```
+
+Beberapa metode array ada yang mengembalikan nilai array lama yang sudah diperbarui (array lama di-update) dengan metode tersebut , dan ada pula metode array yang mengembalikan sebuah array baru dan tidak mengubah data pada array yang lama (array baru yang serupa dengan array lama). Sifat seperti ini disebut mutable atau immutable.
+
+### **.push()**
+*Push* adalah metode array untuk menambahkan nilai di belakang elemen terakhir di array. metode push menerima sebuah parameter yaitu nilai yang ingin kita tambahkan ke dalam array.
+
+```js
+var numbers = [0, 1, 2]
+numbers.push(3)
+console.log(numbers) // [0, 1, 2, 3]
+// Bisa juga memasukkan lebih dari satu nilai menggunakan metode push
+numbers.push(4, 5)
+console.log(numbers) // [0, 1, 2, 3, 4, 5] 
+```
