@@ -1,37 +1,64 @@
 <!DOCTYPE html>
-<br lang="en">
+<html lang="en">
 <head>
+  <link rel="icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJ8hwmzQomijxG8wTkHgzqDVaTqXfP4YyTotW1lS7HlboD1L8NlONvfdOIYFcU5jaWF34&usqp=CAU">
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Input Deret Angka</title>
-</head>
-<br>
-  
-  <label for="deret">Input Deret Pisahkan Dengan Koma</label>
-  <input type="text" name="inputSort" id="inputSort">
-  <input type="button" value="Submit" onclick="sort()">
-  <br>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,300&display=swap" rel="stylesheet">
 
+  <style>
+    body{
+      font-family: Calibri;
+    }
+
+    .teks-berjalan{
+      font-family: Poppins;
+      color: #3333ff;
+      font-size: 20px;
+    }
+  </style>
+</head>
+<body>
+  <!-- bagian awal / deret -->
+  <MARQUEE align="center" direction="left" scrollamount="5" width="100%" behavior="alternate" class="teks-berjalan">MATERI PEMBELAJARAN ARRAY</MARQUEE> 
+  <label for="deret">Input Deret Pisahkan Dengan Koma:</label>
+  <br>
+  <label for="deret">Masukan nilainya</label>
+  <input type="text" name="inputSort" id="inputSort">
+  <br>
+  
+  <!-- bagian kedua / sort -->
   <label for="deret">Hasil Sebelum Sort</label>
   <input type="text" name="deret" id="sebelum" disabled>
   <br>  
-
+  
+  <!-- bagian kedua / sesudahnya sort  -->
   <label for="deret">Hasil sesudah Sort</label>
   <input type="text" name="deret" id="sesudah" disabled>
   <br>
-  <br>
-  <label for="deret">Tambah Data</label>
-  <input type="text" name="push" id="push">
-  <input type="button" value="push" onclick="push()">
-  <br>
+  <label for="deret">Click Submit! Disamping untuk nilainya</label>
+  <input type="button" value="Submit" onclick="sort()">
   
+  <br>
+  <br>
+
+  <!-- bagian ketiga / menambahkan data push -->
+  <label for="deret">Tambah Data di belakang</label>
+  <input type="text" name="push" id="push">
+  <br>
+  <!-- bagian ketiga / sesudah push -->
   <label for="deret">Hasil sesudah push</label>
   <input type="text" name="deret" id="push2" disabled>
-
+  <input type="button" value="push" onclick="push()">
+  
   <br>
   <br>
 
+  <!-- bagian keempat / bagian  pop menghapus elemen pada bagian belakang. -->
   <label for="deret">Hapus elemen paling akhir / belakang</label>
   <input type="button" value="Pop" onclick="pop()"><br>
   <label for="">Hasil sesudah pop</label>
@@ -40,16 +67,48 @@
 </br>
 </br>
 
+  <!-- bagian keempat / bagian tambahkan unshift -->
   <label for="deret">Tambah unshift di sebelum index</label>
+  <br> 
+  <label for="deret">Masukan nilainya</label>
   <input type="text" name="unshift" id="unshift">
-  <input type="button" value="Unshift" onclick="unshift()">
-  
   <br>
   
+  <!-- bagian keempat / hasilnya sesudah unshift -->
   <label for="deret">Hasil sesudah unshift</label>
   <input type="text" name="unshift" id="unshift2" disabled>
+  <br>
+  <label for="deret">Click disamping, untuk melihat hasilnya</label>
+  <input type="button" value="Unshift" onclick="unshift()">
+  <br>
+  <br>
+
+  <!-- bagian kelima / bagian shift menambahkan elemen pada index bagian depan. -->
+  <label for="deret">Hapus elemen paling awal / depan</label>
+  <input type="button" value="Shift" onclick="shift()">
+  <br>
+  <label for="deret">Hasil sesudah shift</label>
+  <input type="text" name="shift" id="shift2" disabled>
+
+  <br>
+  <br>
+
+  <!-- bagian keenam / bagian splice -->
+  <label for="deret">Bagian Splice</label>
+  <input type="button" value="Splice" onclick="splice()">
+  <br>
+  <label for="deret">masukan nilainya</label>
+  <input type="text" name="splice" id="spliceInput"><br>
+      <!-- hasil sebelum -->
+      <label for="deret">hasil sebelum di potong</label>
+      <input type="text" name="spliceSebelum" id="spliceSebelum"></input><br>
+      <!-- hasil sesudah dipotong -->
+      <label for="deret">Hasil sesudah dipotong</label>
+      <input type="text">
+
   
   <script>
+    // bagian awal / deret 
     function sort()
     {
       let input = document.getElementById('inputSort').value;
@@ -59,6 +118,7 @@
       document.getElementById('sesudah').value = sortSplitInput;
     }
     
+    // bagian ketiga / menambahkan data push
     function push()
     {
       // berfungsi untuk mengambil nilai dari sebuah inputan yang mempunyai ID deret
@@ -68,11 +128,13 @@
       // berfungsi untuk memecah string menjadi array
       let splitInputs = input.split(' ');     
       // berfungsi untuk menambah elemen kedalam array yg diambil dari deret
+      splitInputs.sort()
       splitInputs.push(addInput);
       document.getElementById('push2').value = splitInputs;
       console.log(splitInputs);
     }
     
+    // bagian keempat / bagian  pop menghapus elemen pada bagian belakang
     function pop()
     {
       let input = document.getElementById('push2').value;
@@ -82,6 +144,7 @@
       document.getElementById('pop2').value = splitInput;
     }
     
+    // bagian keempat / bagian tambahkan unshift
     function unshift()
     {
       // untuk ambil data value dari hasil pop / input dengan ID pop2
@@ -96,6 +159,16 @@
       unshiftInput.unshift(inputUnshift);
       document.getElementById('unshift2').value = unshiftInput;
     } 
+
+    // bagian kelimat / bagian shift menambahkan elemen pada index bagian depan
+    function shift()
+    {
+      let input = document.getElementById('unshift2').value;
+      let splitInput = input.split(',');
+      splitInput.sort();
+      splitInput.shift();
+      document.getElementById('shift2').value = splitInput;
+    }
     
 
     </script>
