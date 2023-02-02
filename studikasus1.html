@@ -48,6 +48,19 @@
   
   <label for="deret">Hasil sesudah unshift</label>
   <input type="text" name="unshift" id="unshift2" disabled>
+  <br>
+  <br>
+
+  <label for="deret">Hapus elemen paling depan</label>
+  <input type="button" value="shift" onclick="shift()"><br>
+  <label for="">Hasil sesudah shift</label>
+  <input type="text" name="shift" id="shift2" disabled> 
+
+  <br>
+  <br>
+
+
+
   
   <script>
     function sort()
@@ -96,6 +109,16 @@
       unshiftInput.unshift(inputUnshift);
       document.getElementById('unshift2').value = unshiftInput;
     } 
+
+    function shift()
+    {
+      let input = document.getElementById('unshift2').value;
+      let shiftInput = input.split(',');
+      shiftInput.sort();
+      shiftInput.shift();
+      document.getElementById('shift2').value = shiftInput;
+    }
+
     
 
     </script>
