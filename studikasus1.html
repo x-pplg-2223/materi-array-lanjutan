@@ -59,7 +59,17 @@
   <br>
   <br>
 
+  <label for="deret">Potong array</label>
+  <input type="text" name="slice" id="slice2">
+  <input type="button" value="Submit" onclick="slice()">
+  <br>
 
+  <label for="deret">Hasil Slice pertama</label>
+  <input type="text" name="deret" id="sebelSlice" disabled>
+  <br>  
+
+  <label for="deret">Hasil slice kedua</label>
+  <input type="text" name="deret" id="sesuSlice" disabled>
 
   
   <script>
@@ -117,6 +127,17 @@
       shiftInput.sort();
       shiftInput.shift();
       document.getElementById('shift2').value = shiftInput;
+    }
+
+    function slice()
+    {
+      let input = document.getElementById('shift2').value;
+      let sliceInput = input.split(',');
+      let potongan1 = sliceInput.slice();
+      console.log(potongan1);
+     // let potongan2 = sliceInput.slice();
+      //console.log(potongan2);
+
     }
 
     
