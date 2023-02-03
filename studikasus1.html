@@ -59,18 +59,18 @@
   <br>
   <br>
 
-  <label for="deret">Potong array</label>
-  <input type="text" name="slice" id="slice2">
-  <input type="button" value="Submit" onclick="slice()">
+  <label for="deret">Mulai slice dari index</label>
+  <input type="text" name="mulai" id="mulai">
   <br>
-
-  <label for="deret">Hasil Slice pertama</label>
-  <input type="text" name="deret" id="sebelSlice" disabled>
-  <br>  
-
-  <label for="deret">Hasil slice kedua</label>
-  <input type="text" name="deret" id="sesuSlice" disabled>
-
+  <label for="deret">Total index yang diambil</label>
+  <input type="text" name="selesai" id="selesai">
+  <input type="button" value="Slice" onclick="slice()">
+  
+  <br>
+  
+  <label for="deret">Hasil sesudah slice</label>
+  <input type="text" name="slice" id="slice2" disabled>
+  
   
   <script>
     function sort()
@@ -125,21 +125,19 @@
       let input = document.getElementById('unshift2').value;
       let shiftInput = input.split(',');
       shiftInput.sort();
-      shiftInput.shift();
+      shiftInput.shift();   
       document.getElementById('shift2').value = shiftInput;
     }
 
-    function slice()
+    function slice() 
     {
-      let input = document.getElementById('shift2').value;
-      let sliceInput = input.split(',');
-      let potongan1 = sliceInput.slice();
-      console.log(potongan1);
-     // let potongan2 = sliceInput.slice();
-      //console.log(potongan2);
-
-    }
-
+    let input = document.getElementById('shift2').value;
+    let splitInput = input.split(',');
+    let start = document.getElementById('mulai').value;
+    let end = document.getElementById('selesai').value;
+    let slicedArray = splitInput.slice(start, end);
+    document.getElementById('slice2').value = slicedArray;
+  }
     
 
     </script>
