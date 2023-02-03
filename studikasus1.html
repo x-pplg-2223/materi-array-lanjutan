@@ -48,7 +48,20 @@
   
   <label for="deret">Hasil sesudah unshift</label>
   <input type="text" name="unshift" id="unshift2" disabled>
+
+</br>
+</br>
+
+  <label for="deret">Tambah shift di sebelum index</label>
+  <input type="text" name="shift" id="shift">
+  <input type="button" value="shift" onclick="shift()">
   
+  <br>
+  
+  <label for="deret">Hasil sesudah unshift</label>
+  <input type="text" name="shift" id="shift2" disabled>
+ 
+
   <script>
     function sort()
     {
@@ -70,7 +83,6 @@
       // berfungsi untuk menambah elemen kedalam array yg diambil dari deret
       splitInputs.push(addInput);
       document.getElementById('push2').value = splitInputs;
-      console.log(splitInputs);
     }
     
     function pop()
@@ -94,10 +106,18 @@
       unshiftInput.sort();
       // untuk meng-unshift array unshiftInput ditambahkan dengan value.. ??? valuenya adalah inputUnshift
       unshiftInput.unshift(inputUnshift);
-      document.getElementById('unshift2').value = unshiftInput;
+      document.getElementById('unshift2').value = unshiftInput
     } 
-    
 
+    function shift()
+    {
+
+      let input = document.getElementById('unshift2').value;
+      let splitInput = input.split(',');
+      splitInput.sort();
+      splitInput.shift();
+      document.getElementById('shift2').value = splitInput;
+    }
     </script>
 </body>
 </html>
