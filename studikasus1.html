@@ -85,17 +85,16 @@
 </br>
 </br>
 
-  <label for="deret">Mulai splice dari index</label>
-  <input type="text" name="mulai" id="mulai">
-  <br>
-  <label for="deret">Sampai index ke</label>
-  <input type="text" name="selesai" id="selesai">
-  <input type="button" value="Splice" onclick="slice()">
-  
-  <br>
-  
-  <label for="deret">Hasil sesudah Splice</label>
-  <input type="text" name="splice" id="splice2" disabled>
+<label for="deret">Mulai splice dari index</label>
+<input type="text" name="Mulai" id="Mulai">
+<br>
+<label for="deret">Sampai index</label>
+<input type="text" name="selesai" id="selesai">
+<input type="button" value="Splice" onclick="splice()">
+<br>
+<label for="deret">Hasil sesudah splice</label>
+<input type="text" name="splice" id="splice2" disabled>
+
 </br>
 </br>
 
@@ -106,15 +105,14 @@
 </br>
 </br>
 
-<label for="deret">Mengubah Array menjadi String menggunakan Join</label>
-  <input type="text" name="join" id="join">
-  <input type="button" value="join" onclick="join()">
-  
+<label for="deret">Masukan pemisah</label>
+  <input type="text" name="pemisah" id="pemisah">
   <br>
-  
-  <label for="deret">Hasil sesudah Join</label>
+  <label for="deret">Hasil sesudah join</label>
   <input type="text" name="join" id="join2" disabled>
-
+  <br>
+  <label for="deret">Gabungkan semua elemen / join</label>
+  <button onclick="join()">Join</button>
 
   <script>
     function sort()
@@ -181,15 +179,15 @@ var newArray = array.filter((value)=>value!='3');
 console.log(newArray);
 };
 
-  function splice() 
-    {
-    let input = document.getElementById('unshift2').value;
+function splice()
+      {
+        let input = document.getElementById('shift2').value;
     let splitInput = input.split(',');
-    let mulai = document.getElementById('mulai').value;
-    let selesai = document.getElementById('selesai').value;
-    let splicedArray = splitInput.slice(mulai, selesai);
+    let start = document.getElementById('Mulai').value;
+    let end = document.getElementById('selesai').value;
+    let splicedArray = splitInput.splice(start, end);
     document.getElementById('splice2').value = splicedArray;
-  }
+      }
 
   function log() {
     var judul = ["Halo", "nama", "saya", "Misael", "Christopher"] 
@@ -198,15 +196,13 @@ var input = judul.join("-")
 };
 
 function join()
-    {
-      let input = document.getElementById('join').value;
-      let inputjoin = document.getElementById('join').value;
-      let joinInput = input.split(', ');
-      joinInput.sort();
-      joinInput.join(inputjoin);
-      document.getElementById('join2').value = joinInput;
-    } 
-
+      {
+        let input = document.getElementById("splice2").value;
+    let separator = document.getElementById("pemisah").value;
+    let array = input.split(",");
+    let joined = array.join(separator);
+    document.getElementById("join2").value = joined;
+      }
   
 
 
