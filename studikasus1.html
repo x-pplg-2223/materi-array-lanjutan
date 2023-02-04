@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Input Deret Angka</title>
 </head>
+<body bgcolor="pink">
 <br>
   
   <label for="deret">Input Deret Pisahkan Dengan Koma</label>
@@ -48,7 +49,56 @@
   
   <label for="deret">Hasil sesudah unshift</label>
   <input type="text" name="unshift" id="unshift2" disabled>
+
+  <br>
+  <br>
+
+  <label for="deret">shift untuk menghapus elemen paling awal</label>
+  <input type="button" value="Shift" onclick="shift()">
+
+  <br>
+
+  <label for="deret">Hasil sesudah shift</label>
+  <input type="text" name="shift" id="shift2" disabled>
   
+  <br>
+  <br>
+  <label for="deret">Mulai slice dari index</label>
+<input type="text" name="start" id="start">
+<br>
+<label for="deret">Sampai index</label>
+<input type="text" name="end" id="end">
+<input type="button" value="Slice" onclick="slice()">
+
+<br>
+
+<label for="deret">Hasil sesudah slice</label>
+<input type="text" name="slice" id="slice2" disabled>
+<br>
+<label for="deret">Mulai splice dari index</label>
+<input type="text" name="Mulai" id="Mulai">
+<br>
+<label for="deret">Sampai index</label>
+<input type="text" name="selesai" id="selesai">
+<input type="button" value="Splice" onclick="splice()">
+<br>
+<label for="deret">Hasil sesudah splice</label>
+<input type="text" name="splice" id="splice2" disabled>
+
+<br>
+
+<label for="deret">Masukan pemisah</label>
+  <input type="text" name="pemisah" id="pemisah">
+  <br>
+  
+  <!-- bagian kesembilan / hasilnya sesudah join -->
+  <label for="deret">Hasil sesudah join</label>
+  <input type="text" name="join" id="join2" disabled>
+  <br>
+  <label for="deret">Gabungkan semua elemen / join</label>
+  <button onclick="join()">Join</button>
+  
+  <br>
   <script>
     function sort()
     {
@@ -86,9 +136,9 @@
     {
       // untuk ambil data value dari hasil pop / input dengan ID pop2
       let input = document.getElementById('pop2').value;
-      // untuk ambil data value dari input dengan id unshift yang nantinya akan dimasukan kedalah array
+      // untuk ambil data value dari input dengan id unshift yang nantinya akan dimasukan kedalam array
       let inputUnshift = document.getElementById('unshift').value;
-      // variabel untuk split / memecah string kedalam arrray yang nantinya akan di unshift variabel inputShift
+      // variabel untuk split / memecah string kedalam array yang nantinya akan di unshift variabel inputShift
       let unshiftInput = input.split(',');
       // untuk sort array unshiftInput
       unshiftInput.sort();
@@ -96,7 +146,42 @@
       unshiftInput.unshift(inputUnshift);
       document.getElementById('unshift2').value = unshiftInput;
     } 
-    
+    function shift()
+    {
+        let Input = document.getElementById('unshift2').value;
+        let shiftinput = document.getElementById('Shift');
+        let inputShift = Input.split(',');
+        inputShift.sort();
+        inputShift.shift();
+        document.getElementById('shift2').value = inputShift;
+      }
+      function slice()
+      {
+        let input = document.getElementById('shift2').value;
+    let splitInput = input.split(',');
+    let start = document.getElementById('start').value;
+    let end = document.getElementById('end').value;
+    let slicedArray = splitInput.slice(start, end);
+    document.getElementById('slice2').value = slicedArray;
+      }
+      function splice()
+      {
+        // ngambil data dari shift2 bukan dari slice2
+        let input = document.getElementById('shift2').value;
+    let splitInput = input.split(',');
+    let start = document.getElementById('Mulai').value;
+    let end = document.getElementById('selesai').value;
+    let splicedArray = splitInput.splice(start, end);
+    document.getElementById('splice2').value = splicedArray;
+      }
+      function join()
+      {
+        let input = document.getElementById("splice2").value;
+    let separator = document.getElementById("pemisah").value;
+    let array = input.split(",");
+    let joined = array.join(separator);
+    document.getElementById("join2").value = joined;
+      }
 
     </script>
 </body>
