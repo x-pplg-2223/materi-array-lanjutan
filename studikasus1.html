@@ -49,6 +49,55 @@
   <label for="deret">Hasil sesudah unshift</label>
   <input type="text" name="unshift" id="unshift2" disabled>
   
+  <br><br>
+
+  <label for ="deret">Hasil sebelum shift</label>
+  <input type="text" name="shift" id="shift" disabled>
+  <input type="button" value="shift" onclick="shift()">
+  <br>
+  <label for="deret">Hasil sesudah shift</label>
+  <input type="text" name="shift2" id="shift2" disabled>
+
+
+  <br><br>
+
+
+  <label for="deret">Mulai slice dari index</label>
+  <input type="text" name="start" id="start">
+  <br>
+  <label for="deret">Sampai index</label>
+  <input type="text" name="end" id="end">
+  <input type="button" value="Slice" onclick="slice()">
+  <br>
+  <label for="deret">Hasil sesudah slice</label>
+  <input type="text" name="slice" id="slice2" disabled>
+  
+
+  <br><br>
+
+
+  <label for="deret">Mulai splice dari index</label>
+  <input type="text" name="Mulai" id="Mulai">
+  <br>
+  <label for="deret">Sampai index</label>
+  <input type="text" name="selesai" id="selesai">
+  <input type="button" value="Splice" onclick="splice()">
+  <br>
+  <label for="deret">Hasil sesudah splice</label>
+  <input type="text" name="splice" id="splice2" disabled>
+
+  <br><br>
+
+  <label for="deret">Masukan pemisah</label>
+  <input type="text" name="pemisah" id="pemisah">
+  <br>
+  <!-- bagian kesembilan / hasilnya sesudah join -->
+  <label for="deret">Hasil sesudah join</label>
+  <input type="text" name="join" id="join2" disabled>
+  <br>
+  <label for="deret">Gabungkan semua elemen / join</label>
+  <button onclick="join()">Join</button>
+
   <script>
     function sort()
     {
@@ -96,6 +145,48 @@
       unshiftInput.unshift(inputUnshift);
       document.getElementById('unshift2').value = unshiftInput;
     } 
+
+    function shift()
+    {
+      let input = document.getElementById('unshift2').value
+      let inputshift = document.getElementById('shift').value
+      let shiftinput = input.split(',');
+
+      shiftinput.sort();
+
+      shiftinput.shift(inputshift);
+      document.getElementById('shift2').value = shiftinput;
+    }
+
+    function slice()
+    {
+      let input = document.getElementById('shift2').value;
+      let splitInput = input.split(',');
+      let start = document.getElementById('start').value;
+      let end = document.getElementById('end').value;
+      let sliceinput = splitInput.slice(start, end);
+      document.getElementById('slice2').value = sliceinput;
+    }
+
+    function splice()
+      {
+    // ngambil data dari shift2
+      let input = document.getElementById('shift2').value;
+      let splitInput = input.split(',');
+      let start = document.getElementById('Mulai').value;
+      let end = document.getElementById('selesai').value;
+      let splicedArray = splitInput.splice(start, end);
+    document.getElementById('splice2').value = splicedArray;
+      }
+
+    function join()
+      {
+      let input = document.getElementById("splice2").value;
+      let separator = document.getElementById("pemisah").value;
+      let arrayjoin = input.split(",");
+      let joined = arrayjoin.join(separator);
+    document.getElementById("join2").value = joined;
+      }
     
 
     </script>
