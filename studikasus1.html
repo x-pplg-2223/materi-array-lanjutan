@@ -96,8 +96,11 @@
   <label for="deret">mengubah array menjadi string</label>
   <input type="button" value="join" onClick="join()">
   <br>
-  <label for="hasil sebelum join"></label>
+  <label for="">hasil sebelum join</label>
   <input type="text" name="join" id="join2" disabled>
+  <br>
+  <label for="deret">hasil sesudah sebelum</label>
+  <input type="text" name="deret" id="join3" disabled>
 
 </br>
 </br>
@@ -186,6 +189,7 @@
       let inputJoin = input.split(",");
       console.log(inputJoin);
       document.getElementById('join2').value = inputJoin;
+      let ay1 = inputJoin.join('-');
       console.log(ay1);
       document.getElementById('join3').value = ay1;
     }
