@@ -5,99 +5,173 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Input Deret Angka</title>
-</head>
-<br>
-  
-  <label for="deret">Input Deret Pisahkan Dengan Koma</label>
-  <input type="text" name="inputSort" id="inputSort">
-  <input type="button" value="Submit" onclick="sort()">
+</head><center>
+  <p>Input Nilai Di Sini</p>
+  <input type="text" id="numbers">
   <br>
+  <button onclick="sortangka()">Submit</button>
+  <br>
+  <br>
+  <p id="hasil1"></p>
+  <p id="result2"></p>
+  <p id="hasil2"></p>
+  <p id="result"></p>
 
-  <label for="deret">Hasil Sebelum Sort</label>
-  <input type="text" name="deret" id="sebelum" disabled>
-  <br>  
-
-  <label for="deret">Hasil sesudah Sort</label>
-  <input type="text" name="deret" id="sesudah" disabled>
+  <!-- function push() -->
+  <p>Input Nilai Push</p>
+  <input type="text" name="push" id="push"></input>
   <br>
-  <br>
-  <label for="deret">Tambah Data</label>
-  <input type="text" name="push" id="push">
   <input type="button" value="push" onclick="push()">
   <br>
-  
-  <label for="deret">Hasil sesudah push</label>
-  <input type="text" name="deret" id="push2" disabled>
-
-  <br>
+  <p>Hasil Push</p>
+  <input type="text" name="push2" id="push2" disabled>
   <br>
 
-  <label for="deret">Hapus elemen paling akhir / belakang</label>
-  <input type="button" value="Pop" onclick="pop()"><br>
-  <label for="">Hasil sesudah pop</label>
-  <input type="text" name="pop" id="pop2" disabled> 
-  
-</br>
-</br>
+  <!-- function pop -->
+  <p>Hapus Index Yang Paling Akhir</p>
+  <input type="text" name="pop" id="pop2" disabled>
+  <br>
+  <input type="button" value="pop" onclick="pop()">
 
-  <label for="deret">Tambah unshift di sebelum index</label>
+  <!-- function unshift(menambahkan nilai di depan indeks)-->
+  <p>Input Nilai Unshift</p>
   <input type="text" name="unshift" id="unshift">
-  <input type="button" value="Unshift" onclick="unshift()">
-  
   <br>
-  
-  <label for="deret">Hasil sesudah unshift</label>
-  <input type="text" name="unshift" id="unshift2" disabled>
-  
-  <script>
-    function sort()
-    {
-      let input = document.getElementById('inputSort').value;
-      let splitInput = input.split(' ');
-      document.getElementById('sebelum').value = splitInput;
-      let sortSplitInput = splitInput.sort();
-      document.getElementById('sesudah').value = sortSplitInput;
-    }
-    
-    function push()
-    {
-      // berfungsi untuk mengambil nilai dari sebuah inputan yang mempunyai ID deret
-      let input = document.getElementById('inputSort').value;
-      // berfungsi untuk mengambil nilai dari sebuah inputan yang mempunyai ID push
-      let addInput = document.getElementById('push').value;
-      // berfungsi untuk memecah string menjadi array
-      let splitInputs = input.split(' ');     
-      // berfungsi untuk menambah elemen kedalam array yg diambil dari deret
-      splitInputs.push(addInput);
-      document.getElementById('push2').value = splitInputs;
-      console.log(splitInputs);
-    }
-    
-    function pop()
-    {
-      let input = document.getElementById('push2').value;
-      let splitInput = input.split(',');
-      splitInput.sort();
-      splitInput.pop();
-      document.getElementById('pop2').value = splitInput;
-    }
-    
-    function unshift()
-    {
-      // untuk ambil data value dari hasil pop / input dengan ID pop2
-      let input = document.getElementById('pop2').value;
-      // untuk ambil data value dari input dengan id unshift yang nantinya akan dimasukan kedalah array
-      let inputUnshift = document.getElementById('unshift').value;
-      // variabel untuk split / memecah string kedalam arrray yang nantinya akan di unshift variabel inputShift
-      let unshiftInput = input.split(',');
-      // untuk sort array unshiftInput
-      unshiftInput.sort();
-      // untuk meng-unshift array unshiftInput ditambahkan dengan value.. ??? valuenya adalah inputUnshift
-      unshiftInput.unshift(inputUnshift);
-      document.getElementById('unshift2').value = unshiftInput;
-    } 
-    
+  <input type="button" value="unshift" onclick="unshift()">
 
-    </script>
+  <p>Hasil Unshift</p>
+  <input type="text" name="unshift" id="unshift2" disabled>
+
+  <!-- function shift-->
+  <p>Hapus Index Paling Depan</p>
+  <input type="text" name="shift" id="shift2" disabled>
+  <br>
+  <input type="button" value="shift" onclick="shift()">
+
+  <!-- function slice -->
+  <p>Mulai Slice Dari Index</p>
+  <input type="text" name="start" id="start">
+
+  <p>Sampai Elemen Ke</p>
+  <input type="text" name="end" id="end">
+  <br>
+  <input type="button" value="slice" onclick="slice()">
+
+  <p>Hasil Slice</p>
+  <input type="text" name="slice" id="slice2" disabled>
+
+  <!-- function splice -->
+  <p>Hasil Setelah Splice</p>
+  <input type="text" name="splice" id="splice" disabled>
+  <br>
+  <input type="button" value="splice" onclick="splice()">
+  
+  <!-- function join -->
+  <p>Memecah Array Menjadi String Dengan Method (Join)</p>
+  <p>Input Pemisahnya</p>
+  <input type="text" name="pemisah" id="pemisah">
+
+  <p>Hasil Setelah Join</p>   
+  <input type="text" name="join" id="join2" disabled>
+  <br>
+  <button value="join" onclick="join()">Join</button>
+  </center>
+
+
+
+</head>
+<body bgcolor="cyan">
+
+  <script>
+
+      function sortangka(){
+          var input = document.getElementById("numbers").value;
+          
+          var numbers = input.split(" ");
+          document.getElementById("result2").innerHTML =numbers;
+
+          var angka = numbers.sort();
+          
+          document.getElementById("result").innerHTML = numbers;
+
+          var teks ="hasil sebelum sort";
+          var hasil= document.getElementById("hasil1").innerHTML = teks;
+
+          var teks2 ="hasil setelah sort";
+          var hasil3= document.getElementById("hasil2").innerHTML = teks2;
+      }
+
+      function push(){
+          var input = document.getElementById("numbers").value;
+          
+          var nilaiinput = document.getElementById("push").value;
+          
+          var splitinput = input.split(" ")
+          splitinput.sort()
+          var pushsplitinput = splitinput.push(nilaiinput);
+
+          document.getElementById("push2").value = splitinput;
+      }
+
+      function pop(){
+          var input = document.getElementById("push2").value;
+          var splitinput = input.split(",");
+          splitinput.sort()
+          splitinput.pop()
+          document.getElementById("pop2").value = splitinput;
+
+      }
+
+      function unshift(){
+          var input = document.getElementById("pop2").value;
+          
+          var nilaiinput = document.getElementById("unshift").value;
+          
+          var unshiftinput = input.split(",");
+          
+          unshiftinput.sort();
+          
+          unshiftinput.unshift(nilaiinput);
+          
+          document.getElementById("unshift2").value = unshiftinput;
+
+      }
+
+      function shift(){
+          var input = document.getElementById("unshift2").value;
+          var shiftinput = input.split(",");
+          shiftinput.sort();
+          shiftinput.shift();
+          document.getElementById("shift2").value = shiftinput;
+      }
+
+      function slice() 
+      {
+      var input = document.getElementById("shift2").value;
+      var splitinput = input.split(",");                      
+      var start = document.getElementById("start").value;
+      var end = document.getElementById("end").value;
+      var sliceinput = splitinput.slice(start, end);
+      document.getElementById("slice2").value = sliceinput;
+      }
+
+      function splice(){
+          var arr = document.getElementById("shift2").value.split(",");
+          var index = prompt("masukan index yang ingin diganti", "");
+          var count = prompt("berapa banyak element yang ingin dihapus?", "").split(",");
+          var newelements = prompt("masukan element baru yang ingin ditambahkan", "");
+          arr.splice(index, count, ...newelements);
+          document.getElementById("splice").value = arr;
+      }
+
+      function join(){
+          var input = document.getElementById("splice").value;
+          var pemisah = document.getElementById("pemisah").value;
+          var array = input.split(",");
+          var join = array.join(pemisah);
+          document.getElementById("join2").value = join;
+      }
+      
+       </script>
 </body>
 </html>
