@@ -22,12 +22,19 @@
       background-image: url('https://cutewallpaper.org/21/pixel-art-background-gif/Futuristic-Landscapes-Get-a-Retro-Look-Thanks-to-Pixel-Art-.gif');
       background-repeat: no-repeat;
       background-size: cover;
-      width: 45%;
-      margin:auto;
+      width: 100%;
+      margin: auto;
       padding: 20px;
       color: white;
       position: absolute;
       border-radius: 10px;
+    }
+
+    #form-content{
+      position: center;
+      margin: 145px;
+      padding: 50px;
+      font-size: 17px;
     }
 
     .teks-berjalan{
@@ -40,8 +47,11 @@
   </style>
 </head>
 <body>
+  <div class="teks-berjalan">
+      <MARQUEE align="center" direction="left" scrollamount="5" width="100%" behavior="alternate">MATERI PEMBELAJARAN ARRAY</MARQUEE>
+  </div>
+<div id="form-content">
   <!-- bagian awal / deret -->
-  <MARQUEE align="center" direction="left" scrollamount="5" width="100%" behavior="alternate" class="teks-berjalan">MATERI PEMBELAJARAN ARRAY</MARQUEE> 
   <label for="deret">Input Deret Pisahkan Dengan Koma:</label>
   <br>
   <label for="deret">Masukan nilainya</label>
@@ -140,6 +150,7 @@
   <br>
   <label for="deret">Gabungkan semua elemen / join</label>
   <button onclick="joinArray()">Join</button>
+</div>
 
  
   <script>
