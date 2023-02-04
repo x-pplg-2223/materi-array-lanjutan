@@ -44,12 +44,68 @@
   <input type="text" name="unshift" id="unshift">
   <input type="button" value="Unshift" onclick="unshift()">
   
-  <br>
+ <br>
   
   <label for="deret">Hasil sesudah unshift</label>
   <input type="text" name="unshift" id="unshift2" disabled>
-  
-  <script>
+
+</br>
+</br>
+
+    <label for="deret">Hapus elemen pada array pada index paling depan</label>
+    <input type="button" value="shift" onclick="shift()">
+    <br>
+    <label for="deret">Hasil sesudah shift</label>
+    <input type="text" name="shift" id="shift2" disabled>
+
+</br>
+</br>
+
+    <label for="deret">Mulai slice dari index</label>
+    <input type="text" name="start" id="start">
+    <br>
+    <label for="deret">sampai index</label>
+    <input type="text" name="end" id="end">
+    <input type="button" value="slice" onclick="slice()">
+    
+  <br>
+     
+    <label for="deret">Hasil sesudah slice</label>
+    <input type="text" name="slice" id="slice2" disabled>
+    
+</br>
+</br>
+
+     <label for="deret">Mulai splice dari index</label>
+     <input type="text" name="mulai" id="mulai">
+
+<br>
+
+     <label for="deret">sampai index</label>
+     <input type="text" name="selasai" id="selesai">
+     <input type="button" value="splice" onclick="splice()">
+
+</br>
+
+      <label for="deret">Hasil sesudah splice</label>
+      <input type="text" name="splice" id="splice2" disabled>
+
+<br>
+<br>
+
+      <label for="deret">Mengubah Array  menjadi string</label>
+      <input type="button" value="join" onclick="join()"><br>
+      <label for="">Hasil sebelum join</label>
+      <input type="text" name="join" id="join2" disabled>
+
+<br>
+      <label for="deret">Hasil sesudah sebelum</label>
+      <input type="text" name="deret" id="join3" disabled>
+
+</br>
+</br>
+
+   <script>
     function sort()
     {
       let input = document.getElementById('inputSort').value;
@@ -96,7 +152,45 @@
       unshiftInput.unshift(inputUnshift);
       document.getElementById('unshift2').value = unshiftInput;
     } 
+
+    function shift()
+    {
+      let input = document.getElementById('unshift2').value;
+      let splitInput = input.split(',');
+      splitInput.sort();
+      splitInput.shift();
+      document.getElementById('shift2').value = splitInput
+    }
     
+    function slice()
+    {
+      let input = document.getElementById('shift2').value;
+      let splitInput = input.split(',');
+      let start = document.getElementById('start').value;
+      let end = document.getElementById('end').value;
+      let slicedArray = splitInput.slice(start,end);
+      document.getElementById('slice2').value = slicedArray;
+    }
+    function splice()
+    {
+      let input = document.getElementById('slice2').value;
+      let splitInput = input.split(',');
+      let start = document.getElementById('mulai').value;
+      let end = document.getElementById('selesai').value;
+      let splicedArray = splitInput.splice(start, end);
+      document.getElementById('splice2').value = splicedArray;
+    }
+
+    function join()
+    {
+      let input = document.getElementById('splice2').value;
+      let inputjoin = input.split(",");
+      console.log(inputjoin);
+      document.getElementById('join2').value = inputjoin;
+      let ay1 = inputjoin.join("-");
+      console.log(ay1);
+      document.getElementById('join3').value = ay1
+    }
 
     </script>
 </body>
