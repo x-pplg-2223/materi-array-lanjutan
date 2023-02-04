@@ -89,11 +89,11 @@
   <br>
   <br>
 
-  <label for="deret">Masukan pemisah</label>
+  <label for="deret">Input pemisah</label>
   <input type="text" name="pemisah" id="pemisah">
   <br>
 
-   <!-- bagian kesembilan / hasilnya sesudah join -->
+  
    <label for="deret">Hasil sesudah join</label>
    <input type="text" name="join" id="join2" disabled>
    <br>
@@ -171,8 +171,7 @@
 
     function splice()
       {
-        // ngambil data dari shift2 bukan dari slice2
-        let input = document.getElementById('shift2').value;
+    let input = document.getElementById('shift2').value;
     let splitInput = input.split(',');
     let start = document.getElementById('Mulai').value;
     let end = document.getElementById('selesai').value;
