@@ -5,6 +5,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Input Deret Angka</title>
+
+  <h1>Materi Method Array</h1>
+  <h2>Javascript</h2>
 </head>
 <br>
   
@@ -48,7 +51,62 @@
   
   <label for="deret">Hasil sesudah unshift</label>
   <input type="text" name="unshift" id="unshift2" disabled>
+
+</br>
+</br>
+
+  <label for="deret">Tambah shift di sebelum index</label>
+
+  <input type="button" value="shift" onclick="shift()">
   
+  <br>
+  
+  <label for="deret">Hasil sesudah unshift</label>
+  <input type="text" name="shift" id="shift2" disabled>
+ 
+  <br>
+  <br>
+
+  <label for="deret">Start slice dari index</label>
+<input type="text" name="start" id="start">
+<br>
+<label for="deret">Sampai index</label>
+<input type="text" name="end" id="end">
+<input type="button" value="slice" onclick="slice()">
+
+
+<br>
+
+<label for="deret">Hasil sesudah slice</label>
+<input type="text" name="slice" id="slice2" disabled>
+<br>
+<br>
+<label for="deret">Mulai Splice dari index</label>
+<input type="text" name="Mulai" id="Mulai">
+<br>
+<label for="deret">Sampai index</label>
+<input type="text" name="selesai" id="selesai">
+<input type="button" value="splice" onclick="splice()">
+<br>
+<label for="deret">Hasil sesudah splice</label>
+<input type="text" name="splice" id="splice2" disabled>
+<br>
+<br>
+<br>
+<label for="deret">Input kode</label>
+  <input type="text" name="pemisah" id="pemisah">
+  <br>
+  
+  <!-- / hasilnya sesudah join -->
+  <label for="deret">Result sesudah join</label>
+  <input type="text" name="join" id="join2" disabled>
+  <br>
+  <label for="deret">Mengabungkan semua elemen</label>
+  <button onclick="join()">Join</button>
+  
+  <br>
+
+
   <script>
     function sort()
     {
@@ -70,7 +128,6 @@
       // berfungsi untuk menambah elemen kedalam array yg diambil dari deret
       splitInputs.push(addInput);
       document.getElementById('push2').value = splitInputs;
-      console.log(splitInputs);
     }
     
     function pop()
@@ -94,10 +151,49 @@
       unshiftInput.sort();
       // untuk meng-unshift array unshiftInput ditambahkan dengan value.. ??? valuenya adalah inputUnshift
       unshiftInput.unshift(inputUnshift);
-      document.getElementById('unshift2').value = unshiftInput;
+      document.getElementById('unshift2').value = unshiftInput
     } 
-    
 
-    </script>
+    function shift()
+    {
+
+      let input = document.getElementById('unshift2').value;
+      let splitInput = input.split(',');
+      splitInput.sort();
+      splitInput.shift();
+      document.getElementById('shift2').value = splitInput;
+    }
+
+    function slice()
+    {
+      let input = document  .getElementById('shift2').value;
+    let splitInput = input.split(',');
+    let start = document.getElementById('start').value
+    let end = document.getElementById('end').value
+    let sliceArray = splitInput.slice(start, end);
+    document.getElementById('slice2').value = sliceArray;
+    }
+
+    function splice()
+    {
+      let input = document.getElementById("shift2").value;
+      let splitInput = input.split(',');
+      let start =   document.getElementById('Mulai').value;
+      let end = document.getElementById('selesai').value;
+      let splicedArray = splitInput.splice(start, end);
+      document.getElementById('splice2').value = splicedArray  
+    
+    }
+
+    function join()
+      {
+        let input = document.getElementById("splice2").value;
+    let separator = document.getElementById("pemisah").value;
+    let array = input.split(",");
+    let joined = array.join(separator);
+    document.getElementById("join2").value = joined;
+      }
+
+ </script>
 </body>
 </html>
