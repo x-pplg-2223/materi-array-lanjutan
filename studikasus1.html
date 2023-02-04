@@ -1,25 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- icon pada title -->
   <link rel="icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJ8hwmzQomijxG8wTkHgzqDVaTqXfP4YyTotW1lS7HlboD1L8NlONvfdOIYFcU5jaWF34&usqp=CAU">
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Input Deret Angka</title>
+  <!-- font untuk marquee -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,300&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <!-- font untuk body -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Khand&display=swap" rel="stylesheet">
 
   <style>
     body{
-      font-family: Calibri;
+      font-family: 'Khand', sans-serif;
+      background-image: url('https://cutewallpaper.org/21/pixel-art-background-gif/Futuristic-Landscapes-Get-a-Retro-Look-Thanks-to-Pixel-Art-.gif');
+      background-repeat: no-repeat;
+      background-size: cover;
+      width: 45%;
+      margin:auto;
+      padding: 20px;
+      color: white;
+      position: absolute;
+      border-radius: 10px;
     }
 
     .teks-berjalan{
-      font-family: Poppins;
-      color: #3333ff;
+      font-family: 'Press Start 2P', cursive;
+      text-align: center;
+      color: #009900;
       font-size: 20px;
     }
+
   </style>
 </head>
 <body>
@@ -64,8 +81,8 @@
   <label for="">Hasil sesudah pop</label>
   <input type="text" name="pop" id="pop2" disabled> 
   
-</br>
-</br>
+  </br>
+  </br>
 
   <!-- bagian keempat / bagian tambahkan unshift -->
   <label for="deret">Tambah unshift di sebelum index</label>
@@ -93,20 +110,38 @@
   <br>
   <br>
 
-  <!-- bagian keenam / bagian splice -->
-  <label for="deret">Bagian Splice</label>
-  <input type="button" value="Splice" onclick="splice()">
+  <!-- bagian slice -->
+  <label for="deret">index mulai Slice<label>
+  <input type="text" name="start" id="start">
   <br>
-  <label for="deret">masukan nilainya</label>
-  <input type="text" name="splice" id="spliceInput"><br>
-      <!-- hasil sebelum -->
-      <label for="deret">hasil sebelum di potong</label>
-      <input type="text" name="spliceSebelum" id="spliceSebelum"></input><br>
-      <!-- hasil sesudah dipotong -->
-      <label for="deret">Hasil sesudah dipotong</label>
-      <input type="text">
-
+  <label for="deret">Sampai index</label>
+  <input type="text" name="end" id="end">
   
+  <br>
+  <label for="deret">index akhir slice</label>
+  <input type="text" name="slice" id="slice2" disabled>
+  <input type="button" value="Slice" onclick="slice()">
+  <br><br>
+
+  <!-- bagian splice -->
+  <label for="splice">Hasil setelah splice</label>
+  <input type="text" name="splice" id="splice" disabled>
+  <input type="button" value="Splice" onclick="splice()">
+  <br><br>
+  
+  <!-- bagian kesembilan / bagian join -->
+  <label for="deret">Masukan pemisah</label>
+  <input type="text" name="pemisah" id="pemisah">
+  <br>
+  
+  <!-- bagian kesembilan / hasilnya sesudah join -->
+  <label for="deret">Hasil sesudah join</label>
+  <input type="text" name="join" id="join2" disabled>
+  <br>
+  <label for="deret">Gabungkan semua elemen / join</label>
+  <button onclick="joinArray()">Join</button>
+
+ 
   <script>
     // bagian awal / deret 
     function sort()
@@ -170,6 +205,32 @@
       document.getElementById('shift2').value = splitInput;
     }
     
+    function slice() 
+    {
+    let input = document.getElementById('shift2').value;
+    let splitInput = input.split(',');
+    let start = document.getElementById('start').value;
+    let end = document.getElementById('end').value;
+    let slicedArray = splitInput.slice(start, end);
+    document.getElementById('slice2').value = slicedArray;
+  }
+
+  function splice() {
+    var input = document.getElementById("slice2").value.split(",");
+    var inputIndex = prompt("Masukan index yang ingin diganti", "");
+    var count = prompt("Berapa banyak elemen yang ingin dihapus?", "");
+    var newElements = prompt("Masukan elemen baru yang ingin ditambahkan", "").split(",");
+    input.splice(inputIndex, count, ...newElements);
+    document.getElementById("splice").value = input;
+  }
+  
+  function joinArray() {
+    let input = document.getElementById("splice").value;
+    let separator = document.getElementById("pemisah").value;
+    let array = input.split(",");
+    let joined = array.join(separator);
+    document.getElementById("join2").value = joined;
+  }
 
     </script>
 </body>
