@@ -48,6 +48,56 @@
   
   <label for="deret">Hasil sesudah unshift</label>
   <input type="text" name="unshift" id="unshift2" disabled>
+  <br>
+  <br>
+
+  <label for="deret">Hapus elemen paling depan</label>
+  <input type="button" value="shift" onclick="shift()"><br>
+  <label for="">Hasil sesudah shift</label>
+  <input type="text" name="shift" id="shift2" disabled> 
+
+  <br>
+  <br>
+
+  <label for="deret">Mulai slice dari index</label>
+  <input type="text" name="mulai" id="mulai">
+  <br>
+  <label for="deret">Total index yang diambil</label>
+  <input type="text" name="selesai" id="selesai">
+  <input type="button" value="Slice" onclick="slice()">
+  
+  <br>
+  
+  <label for="deret">Hasil sesudah slice</label>
+  <input type="text" name="slice" id="slice2" disabled>
+  <br>
+  <br>
+
+  <label for="deret">Mulai splice dari index ( ambil data dari shift)</label>
+<input type="text" name="Mulai" id="start">
+<br>
+<label for="deret">Sampai index</label>
+<input type="text" name="selesai" id="end">
+<input type="button" value="Splice" onclick="splice()">
+<br>
+<label for="deret">Hasil sesudah splice</label>
+<input type="text" name="splice" id="splice2" disabled>
+
+<br>
+<br>
+
+<label for="deret">Masukan pemisah</label>
+  <input type="text" name="pemisah" id="pemisah">
+  <br>
+  
+  <!-- bagian kesembilan / hasilnya sesudah join -->
+  <label for="deret">Hasil sesudah join</label>
+  <input type="text" name="join" id="joinngabs" disabled>
+  <br>
+  <label for="deret">Gabungkan semua elemen / join</label>
+  <button onclick="join()">Join</button>
+  
+  <br>
   
   <script>
     function sort()
@@ -96,8 +146,45 @@
       unshiftInput.unshift(inputUnshift);
       document.getElementById('unshift2').value = unshiftInput;
     } 
-    
 
-    </script>
+    function shift()
+    {
+      let input = document.getElementById('unshift2').value;
+      let shiftInput = input.split(',');
+      shiftInput.sort();
+      shiftInput.shift();   
+      document.getElementById('shift2').value = shiftInput;
+    }
+
+    function slice() 
+    {
+    let input = document.getElementById('shift2').value;
+    let splitInput = input.split(',');
+    let start = document.getElementById('mulai').value;
+    let end = document.getElementById('selesai').value;
+    let slicedArray = splitInput.slice(start, end);
+    document.getElementById('slice2').value = slicedArray;
+
+    
+  }
+  function splice()
+      {
+        
+        let input = document.getElementById('shift2').value;
+    let splitInput = input.split(',');
+    let start = document.getElementById('start').value;
+    let end = document.getElementById('end').value;
+    let splicedArray = splitInput.splice(start, end);
+    document.getElementById('splice2').value = splicedArray;
+      }
+      function join()
+      {
+        let input = document.getElementById("splice2").value;
+    let separator = document.getElementById("pemisah").value;
+    let hehe = input.split(",");
+    let joined = hehe.join(separator);
+    document.getElementById("joinngabs").value = joined;
+      }
+   </script>
 </body>
 </html>
