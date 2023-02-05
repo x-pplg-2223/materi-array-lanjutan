@@ -6,9 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Input Deret Angka</title>
 </head>
+<body>
 <br>
   
-  <label for="deret">Input Deret Pisahkan Dengan Koma</label>
+  <label for="deret">Input Deret dpisahkan spasi</label>
   <input type="text" name="inputSort" id="inputSort">
   <input type="button" value="Submit" onclick="sort()">
   <br>
@@ -40,7 +41,7 @@
 </br>
 </br>
 
-  <label for="deret">Tambah unshift di sebelum index</label>
+  <label for="deret">Tambah sebuah angka di bagian depan</label>
   <input type="text" name="unshift" id="unshift">
   <input type="button" value="Unshift" onclick="unshift()">
   
@@ -48,6 +49,42 @@
   
   <label for="deret">Hasil sesudah unshift</label>
   <input type="text" name="unshift" id="unshift2" disabled>
+
+</br>
+<br>
+<label for="deret"> Hapus elemen dibagian depan</label>
+<input type="button" value="shift" onclick="shift()"></br> 
+<label for="deret">Hasil sesudah shift</label>
+<input type="text" name="shift" id="shift2" disabled>
+
+</br>
+<br>
+<label for="deret">Slice elemen ke </label>
+<input type="text" name="elmen" id="elmen"><br>
+<label for="deret">sampai index</label>
+<input type="text" name="ndx" id="ndx">
+<input type="button" value="Slice" onclick="slice()"></br>
+
+<label for="deret">Hasil nya adalah</label>
+<input type="text" name="slice" id="slice2" disabled>
+
+</br>
+<br>
+<label for="deret">Splice elemen ke </label>
+<input type="text" name="elmental" id="elmental"><br>
+<label for="deret">sampai index</label>
+<input type="text" name="yndx" id="yndx">
+<input type="button" value="Splice" onclick="splicearray()"></br>
+
+<label for="deret">Hasil nya adalah</label>
+<input type="text" name="splice" id="splice2" disabled><br><br>
+
+<label for="deret"> Tambahkan pemisah diantara angka </label>
+<input type="text" name="join" id="join">
+<input type="button" value="join" onclick="join()"></br> 
+<label for="deret">Hasil sesudah shift</label>
+<input type="text" name="join" id="join2" disabled>
+
   
   <script>
     function sort()
@@ -97,7 +134,44 @@
       document.getElementById('unshift2').value = unshiftInput;
     } 
     
+    function shift()
+    {
+      let input = document.getElementById('unshift2').value;
+      let shiftinput = input.split(',');
+      shiftinput.sort();
+      shiftinput.shift();
+      document.getElementById('shift2').value = shiftinput;
+    }
 
+    function slice()
+    {
+      let input = document.getElementById('shift2').value;
+      let splitinput = input.split(',');
+      let elmen = document.getElementById('elmen').value;
+      let ndx = document.getElementById('ndx').value;
+      let akhir = splitinput.slice(elmen,ndx);
+      document.getElementById('slice2').value = akhir;
+    }
+
+    function splicearray()
+    {
+      let input = document.getElementById('slice2').value.split(',');
+      let elmentals = document.getElementById('elmental','').value;
+      let yndxi = document.getElementById('yndx','').value;
+      let end = input.splice(elmentals,yndxi);
+      document.getElementById('splice2').value = input;
+      console.log(end);
+    }
+
+    function join()
+    {
+      let sushi = document.getElementById('splice2').value;
+      let separator = document.getElementById("join").value;
+      let array = sushi.split(',');
+      let joint = array.join(separator);
+      document.getElementById('join2').value = joint;
+      //console.log(joint);
+    }
     </script>
 </body>
 </html>
