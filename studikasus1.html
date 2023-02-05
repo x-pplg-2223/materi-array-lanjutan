@@ -23,33 +23,34 @@
       background-repeat: no-repeat;
       background-size: cover;
       width: 100%;
+       
+    }
+
+    #form-content{
+      font-size: 14px;
       margin: auto;
       padding: 20px;
       color: white;
       position: absolute;
-      border-radius: 10px;
-    }
-
-    #form-content{
-      position: center;
-      margin: 145px;
-      padding: 50px;
-      font-size: 17px;
+      border-radius: 100px;
     }
 
     .teks-berjalan{
       font-family: 'Press Start 2P', cursive;
       text-align: center;
       color: #009900;
-      font-size: 20px;
+      font-size: 50px;
     }
 
   </style>
 </head>
 <body>
+  <!-- teks berjalan -->
   <div class="teks-berjalan">
       <MARQUEE align="center" direction="left" scrollamount="5" width="100%" behavior="alternate">MATERI PEMBELAJARAN ARRAY</MARQUEE>
   </div>
+
+  <!-- form -->
 <div id="form-content">
   <!-- bagian awal / deret -->
   <label for="deret">Input Deret Pisahkan Dengan Koma:</label>
@@ -237,9 +238,9 @@
   
   function joinArray() {
     let input = document.getElementById("splice").value;
-    let separator = document.getElementById("pemisah").value;
+    let inputPemisah = document.getElementById("pemisah").value;
     let array = input.split(",");
-    let joined = array.join(separator);
+    let joined = array.join(inputPemisah);
     document.getElementById("join2").value = joined;
   }
 
