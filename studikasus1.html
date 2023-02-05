@@ -48,6 +48,39 @@
   
   <label for="deret">Hasil sesudah unshift</label>
   <input type="text" name="unshift" id="unshift2" disabled>
+  <br><br>
+
+  <label for="deret"> Shift menghilangkan nilai depan </label>
+<input type="button" value="Shift" onclick="Shift()">
+<br>
+<Label for="deret">Hasil setelah Shift</Label>
+<input type="text" name="Shift" id="Shift3" disabled>
+<br><br>
+
+<label for="deret">Mengambil data dengan slice</label>
+<input type="text" name="mulai" id="mulai">
+<label for="deret">sampai</label>
+<input type="text" name="selesai" id="selesai">
+<input type="button" value="Slice" onclick="slice()">
+<br>
+<label for="deret">Hasil data slice</label>
+<input type="text" name="slice" id="slice3" disabled>
+<br><br>
+
+<label for="splice">Hasil setelah splice</label>
+<input type="text" name="splice" id="splice" disabled>
+<input type="button" value="Splice" onclick="splice()">
+<br><br>
+
+<label for="deret">Gabungkan semua elemen/Join</label>
+<br>
+<label for="deret">Input pemisah</label>
+<input type="text" name="pemisah" id="pemisah">
+<input type="button" value="Join" onclick="Join()">
+<br>
+<label for="deret">Hasil setelah Join</label>
+<input type="text" name="join3" id="join3" disabled>
+
   
   <script>
     function sort()
@@ -96,6 +129,45 @@
       unshiftInput.unshift(inputUnshift);
       document.getElementById('unshift2').value = unshiftInput;
     } 
+
+    function Shift()
+    {
+        let input = document.getElementById ("unshift2").value;
+        let shiftInput = input.split(",");
+        shiftInput.sort ();
+        shiftInput.shift();
+        document.getElementById("Shift3").value = shiftInput;
+    }
+
+    function slice()
+    {
+        let input = document.getElementById("Shift3").value;
+        let splitInput = input.split(",");
+        let mulai = document.getElementById("mulai").value;
+        let selesai = document.getElementById("selesai").value;
+        let slicedArray = splitInput.slice(mulai, selesai);
+        document.getElementById("slice3").value = slicedArray;
+    }
+
+    function splice()
+    {
+        let input = document.getElementById("slice3").value.split(",");
+        let inputIndex = prompt("Input data yang ingin diganti?" , "");
+        let count = prompt("Berapa elemen yang mau dihapus?" , "");
+        let newElements = prompt("Masukan elemen baru yang ingin ditambahkan" , "").split(",");
+        input.splice(inputIndex, count, ...newElements);
+        document.getElementById("splice").value = input;
+    }
+
+    function Join()
+    {
+        let input = document.getElementById ("splice").value;
+        let separator = document.getElementById ("pemisah").value;
+        let array  = input.split(",");
+        let joined = array.join (separator);
+        document.getElementById("join3").value = joined;
+    }
+
     
 
     </script>
