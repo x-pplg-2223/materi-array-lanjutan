@@ -11,40 +11,59 @@
 <body>
 
     <style>
-        label {
-  display: block;
-  margin-bottom: 10px;
+body {
+    background-color: #1a1a1a;
+    font-family: sans-serif;
+    color: #f2f2f2;
 }
 
-input[type="text"], input[type="button"] {
-  margin-bottom: 10px;
+label {
+    display: block;
+    margin-bottom: 10px;
 }
 
-input[type="text"], input[type="button"] {
-  padding: 5px;
-}
-
+input[type="text"], 
+input[type="button"],
 button {
-  padding: 5px 10px;
-  margin-bottom: 10px;
+    display: inline-block;
+    margin-bottom: 10px;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid gray;
+    background-color: transparent;
+    color: #f2f2f2;
+}
+
+input[type="text"] {
+    width: 230px;
+}
+
+input[type="button"],
+button {
+    background-color: #fbff00;
+    color: black;
+    cursor: pointer;
 }
 button:hover,
 input[type="button"]:hover {
-  background-color: aqua;
-  border-color: greenyellow;
-  color: white;
-  transition: .55s;
-  cursor: pointer;
+    background-color: aqua;
+    border-color: greenyellow;
+    color: white;
+    transition: .55s;
+    cursor: pointer;
 }
-
-
+input[type="text"][disabled] {
+    background-color: #444444;
+    cursor: not-allowed;
+}
 br {
-  margin-bottom: 10px;
+    margin-bottom: 10px;
 }
     </style>
 
     <br>
-    <label for="deret">Input Deret Pisahkan Dengan Koma</label>
+    <ul>
+    <li><label for="deret">Input Deret Pisahkan Dengan Koma</label></li>
     <input type="text" name="inputSort" id="inputSort" placeholder="contoh: a,b,c / 1,2,3">
     <input type="button" value="Submit" onclick="sort()">
     <br>
@@ -55,9 +74,11 @@ br {
 
     <label for="deret">Hasil sesudah Sort</label>
     <input type="text" name="deret" id="sesudah" disabled>
+
     <br>
     <br>
-    <label for="deret">Tambah Data</label>
+
+    <li><label for="deret">Tambah Data</label></li>
     <input type="text" name="push" id="push" placeholder="contoh: d atau 4">
     <input type="button" value="push" onclick="push()">
     <br>
@@ -68,7 +89,7 @@ br {
     <br>
     <br>
 
-    <label for="deret">Hapus elemen paling akhir / belakang</label>
+    <li><label for="deret">Hapus elemen paling akhir / belakang</label></li>
     <input type="button" value="Pop" onclick="pop()"><br>
     <label for="">Hasil sesudah pop</label>
     <input type="text" name="pop" id="pop2" disabled>
@@ -76,7 +97,7 @@ br {
     </br>
     </br>
 
-    <label for="deret">Tambah unshift di sebelum index</label>
+    <li><label for="deret">Tambah unshift di sebelum index</label></li>
     <input type="text" name="unshift" id="unshift" placeholder="contoh: 0 atau a">
     <input type="button" value="Unshift" onclick="unshift()">
 
@@ -88,14 +109,14 @@ br {
     <br>
     <br>
 
-    <label for="deret">Hapus elemen paling depan</label>
+    <li><label for="deret">Hapus elemen paling depan</label></li>
     <input type="button" value="shift" onclick="shift()"><br>
     <label for="">Hasil sesudah shift</label>
     <input type="text" name="shift" id="shift2" disabled>
 
     <br>
     <br>
-    <label for="deret">Slice</label>
+    <li><label for="deret">Slice</label></li>
     <input type="text" name="start" id="start" placeholder="masukkan index awal">
     <br>
     <label for="deret">Sampai Index ke-</label>
@@ -108,7 +129,7 @@ br {
 
     <br>
     <br>
-    <label for="deret">Splice</label>
+    <li><label for="deret">Splice</label></li>
     <input type="text" name="splice" id="splice2" placeholder="masukkan index">
     <br><br>
   
@@ -127,9 +148,9 @@ br {
 
     <br>
     <br>
-    <label for="deret">Masukan pisah</label>
+    <li><label for="deret">Masukan pisah</label></li>
     <input type="text" name="pisah" id="pisah" placeholder="Contoh: &, -, _">
-    <br>
+    <br><br>
   
     <!-- bagian kesembilan / hasilnya sesudah join -->
     <label for="deret">Hasil sesudah join</label>
@@ -139,6 +160,7 @@ br {
     <button onclick="joinArray()">Join</button>
     </br>
     </br>
+    </ul>
     <script>
 
         function sort() {
