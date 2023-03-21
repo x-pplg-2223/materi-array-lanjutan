@@ -1,103 +1,326 @@
 <!DOCTYPE html>
-<br lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Input Deret Angka</title>
-</head>
-<br>
-  
-  <label for="deret">Input Deret Pisahkan Dengan Koma</label>
-  <input type="text" name="inputSort" id="inputSort">
-  <input type="button" value="Submit" onclick="sort()">
-  <br>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Input Deret Angka</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;500;600;700;800;900;1000&display=swap" rel="stylesheet">
+	</head>
 
-  <label for="deret">Hasil Sebelum Sort</label>
-  <input type="text" name="deret" id="sebelum" disabled>
-  <br>  
+	<body>
+		<h1>Latihan Array Lanjutan</h1>
+		<div class="container">
+			<div class="form">
+				<div class="form-input">
+					<div style="display: flex; flex-direction: column;">
+						<label for="inputArray">Input deret angka (dipisah oleh koma)</label>
+						<input type="text" id="inputArray" oninput="onInput()" placeholder="1, 2, 3, ...">
+					</div>
+					<div style="height:0.9rem;"></div>
+					<label for="resultArray">Hasil array yang di modifikasi</label>
+					<textarea id="resultArray" disabled draggable="false" type="text" style="width: 100%; resize: vertical;"></textarea>
+				</div>
+				<div>
+					<button id="sort" onclick="sort()" style="padding-top: 3px; padding-bottom: 3px;">Sortir angka</button>
+					<button id="pop" onclick="pop()" style="padding-top: 3px; padding-bottom: 3px;">Pop array</button>
+					<button id="pop" onclick="pop()" style="padding-top: 3px; padding-bottom: 3px;">Shift array</button>
+				</div>
+				<div class="form-input">
+					<label for="push">Tambah data</label>
+					<div>
+						<input type="number" id="push" placeholder="">
+						<button type="button" onclick="push()">Tambah</button>
+					</div>
+				</div>
+				<div class="form-input">
+					<label for="shift">Unshift array</label>
+					<div>
+						<input type="number" id="unshift" placeholder="">
+						<button type="button" onclick="unshift()">Unshift</button>
+					</div>
+				</div>
+				<div class="form-input">
+					<label for="slice">Slice array</label>
+					<div>
+						<input type="number" id="slice1" min="0" placeholder="Range pertama">
+						<input type="number" id="slice2" min="0" placeholder="Range kedua (opsional)">
+						<button type="button" onclick="slice()">Slice</button>
+					</div>
+				</div>
+				<div class="form-input">
+					<label for="splice">Splice array</label>
+					<div>
+						<input type="number" id="splice1" min="0" placeholder="Indeks mulai">
+						<input type="number" id="splice2" min="0" placeholder="Jumlah nilai yang dihapus">
+						<div style="margin-top: 7px; display: flex; flex-direction: column;">
+							<label>Nilai yang ingin ditambahkan (opsional)</label>
+							<input type="text" id="splice3" min="0" placeholder="1, 2, 3, ...">
+						</div>
+						<button style="margin-top: 10px" type="button" onclick="splice()">Splice</button>
+					</div>
+				</div>
+				<div class="form-input">
+					<label for="join">Join array</label>
+					<div>
+						<input type="text" id="join">
+						<button type="button" onclick="join()">Join</button>
+					</div>
+				</div>
+				<div class="form-input">
+					<label for="split">Split array</label>
+					<div>
+						<input type="text" id="splitInput" placeholder="Input teks untuk di split">
+						<input type="text" id="separator" placeholder="Separator (pemisah)">
+						<textarea placeholder="Hasil split" id="splitResult" disabled draggable="false" type="text" style="width: 100%; margin-top: 5px; margin-bottom: 0;"></textarea>
+						<button type="button" onclick="split()">Split</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<br>
+		<script>
+			// Inputan dari user
+			let array = [];
 
-  <label for="deret">Hasil sesudah Sort</label>
-  <input type="text" name="deret" id="sesudah" disabled>
-  <br>
-  <br>
-  <label for="deret">Tambah Data</label>
-  <input type="text" name="push" id="push">
-  <input type="button" value="push" onclick="push()">
-  <br>
-  
-  <label for="deret">Hasil sesudah push</label>
-  <input type="text" name="deret" id="push2" disabled>
+			// Array yang sudah dimodifikasi baik melalui button atau input
+			let modifiedArray = [];
 
-  <br>
-  <br>
+			// Textbox untuk menampilkan hasil array yang dimodifikasi
+			const result = document.getElementById("resultArray");
 
-  <label for="deret">Hapus elemen paling akhir / belakang</label>
-  <input type="button" value="Pop" onclick="pop()"><br>
-  <label for="">Hasil sesudah pop</label>
-  <input type="text" name="pop" id="pop2" disabled> 
-  
-</br>
-</br>
+			// Variabel yang mengindikasikan bahwa input deret angka sudah valid
+			let valid = false;
 
-  <label for="deret">Tambah unshift di sebelum index</label>
-  <input type="text" name="unshift" id="unshift">
-  <input type="button" value="Unshift" onclick="unshift()">
-  
-  <br>
-  
-  <label for="deret">Hasil sesudah unshift</label>
-  <input type="text" name="unshift" id="unshift2" disabled>
-  
-  <script>
-    function sort()
-    {
-      let input = document.getElementById('inputSort').value;
-      let splitInput = input.split(' ');
-      document.getElementById('sebelum').value = splitInput;
-      let sortSplitInput = splitInput.sort();
-      document.getElementById('sesudah').value = sortSplitInput;
-    }
-    
-    function push()
-    {
-      // berfungsi untuk mengambil nilai dari sebuah inputan yang mempunyai ID deret
-      let input = document.getElementById('inputSort').value;
-      // berfungsi untuk mengambil nilai dari sebuah inputan yang mempunyai ID push
-      let addInput = document.getElementById('push').value;
-      // berfungsi untuk memecah string menjadi array
-      let splitInputs = input.split(' ');     
-      // berfungsi untuk menambah elemen kedalam array yg diambil dari deret
-      splitInputs.push(addInput);
-      document.getElementById('push2').value = splitInputs;
-      console.log(splitInputs);
-    }
-    
-    function pop()
-    {
-      let input = document.getElementById('push2').value;
-      let splitInput = input.split(',');
-      splitInput.sort();
-      splitInput.pop();
-      document.getElementById('pop2').value = splitInput;
-    }
-    
-    function unshift()
-    {
-      // untuk ambil data value dari hasil pop / input dengan ID pop2
-      let input = document.getElementById('pop2').value;
-      // untuk ambil data value dari input dengan id unshift yang nantinya akan dimasukan kedalah array
-      let inputUnshift = document.getElementById('unshift').value;
-      // variabel untuk split / memecah string kedalam arrray yang nantinya akan di unshift variabel inputShift
-      let unshiftInput = input.split(',');
-      // untuk sort array unshiftInput
-      unshiftInput.sort();
-      // untuk meng-unshift array unshiftInput ditambahkan dengan value.. ??? valuenya adalah inputUnshift
-      unshiftInput.unshift(inputUnshift);
-      document.getElementById('unshift2').value = unshiftInput;
-    } 
-    
+			// Live update untuk input: "inputArray"
+			function onInput() {
+				// Ambil element input "inputArray"
+				const el = document.getElementById("inputArray");
 
-    </script>
-</body>
+				// Parse data input yang dipisah dengan koma
+				// Lalu trim untuk menghilangkan spasi yang berlebih
+				// Dan filter untuk menghilangkan data yang kosong
+				array = el.value.split(",").map(x => x.trim()).filter(x => x !== "");
+
+				// Jika input deret angka terdapat huruf
+				// Maka tampilkan pesan error ke textbox result
+				if (array.some(x => isNaN(parseInt(x)))) {
+					valid = false;
+					return result.value = "Deret angka salah!"
+				}
+
+				// Ubah variabel valid karena inputan sudah benar
+				valid = true;
+			
+				// Update variabel modifiedArray 
+				modifiedArray = [...array.map(x => parseInt(x))];
+
+				// Update tampilan result
+				updateResult();
+			}
+			
+
+			function sort() {
+				// Jika input deret angka tidak valid, maka aksi tidak dilanjutkan
+				if (!valid) return alert("Deret angka tidak valid");
+
+				// Jika input deret angka kosong, maka aksi tidak dilanjutkan
+				if (!array || !array.length) return alert("Deret angka kosong");
+
+				// Ambil element button
+				const sortButton = document.getElementById("sort");
+
+				// Sortir array
+				modifiedArray = modifiedArray.sort((a, b) => a - b);
+
+				// Update tampilan result
+				updateResult();
+			}
+
+			function push() {
+				// Jika input deret angka tidak valid, maka aksi tidak dilanjutkan
+				if (!valid) return alert("Deret angka tidak valid");
+				const pushInput = document.getElementById("push").value;
+				// Push inputan ke variabel modifiedArray
+				modifiedArray.push(parseInt(pushInput));
+				
+				// Update tampilan result
+				updateResult();
+			}
+
+			function pop() {
+				// Jika input deret angka tidak valid, maka aksi tidak dilanjutkan
+				if (!valid) return alert("Deret angka tidak valid");
+
+				// Jika input deret angka kosong, maka aksi tidak dilanjutkan
+				if (!array || !array.length) return alert("Deret angka kosong");
+
+				// Pop variabel modifiedArray
+				modifiedArray.pop();
+				
+				// Update tampilan result
+				updateResult();
+			}
+
+			function unshift() {
+				// Jika input deret angka tidak valid, maka aksi tidak dilanjutkan
+				if (!valid) return alert("Deret angka tidak valid");
+				
+				// Ambil input untuk unshift
+				const unshiftInput = document.getElementById("unshift").value;
+
+				// Unshift inputan user
+				modifiedArray.unshift(parseInt(unshiftInput));
+				
+				// Update tampilan result
+				updateResult();
+			}
+
+			function shift() {
+				// Jika input deret angka tidak valid, maka aksi tidak dilanjutkan
+				if (!valid) return alert("Deret angka tidak valid");
+
+				// Jika input deret angka kosong, maka aksi tidak dilanjutkan
+				if (!array || !array.length) return alert("Deret angka kosong");
+
+				// Shift variabel modifiedArray
+				modifiedArray.shift();
+
+				// Update tampilan result
+				updateResult();
+			}
+
+			function slice() {
+				// Jika input deret angka tidak valid, maka aksi tidak dilanjutkan
+				if (!valid) return alert("Deret angka tidak valid");
+
+				// Jika input deret angka kosong, maka aksi tidak dilanjutkan
+				if (!array || !array.length) return alert("Deret angka kosong");
+
+				// Ambil value inputan dari "slice1" dan "slice2"
+				const slice1 = parseInt(document.getElementById("slice1").value);
+				const slice2 = parseInt(document.getElementById("slice2").value);
+				
+				// Jika slice1 < 0
+				if (slice1 < 0) return alert("Range pertama slice tidak boleh < 0");
+
+				// Jika slice1 > length dari array modifiedArray
+				if (slice1 > modifiedArray.length) return alert("Range pertama slice tidak boleh melebihi length array");
+
+				// Jika user menginput slice2
+				if (!isNaN(slice2)) {
+					// Jika slice2 < slice1
+					if (slice2 < slice1) return alert("Range kedua slice tidak boleh melebihi range pertama");
+					// Jika slic2 > length dari array modifiedArray
+					if (slice2 > modifiedArray.length) return alert("Range kedua slice tidak boleh melebihi length array");
+					// Slice modifiedArray
+					modifiedArray = modifiedArray.slice(slice1, slice2);
+				} else { // Karena parameter kedua dari fungsi slice opsional, kita bisa mengabaikan slice2 jika tidak ada
+					modifiedArray = modifiedArray.slice(slice1);
+				}
+
+				// Update tampilan result
+				updateResult();
+			}
+
+			function splice() {
+				// Jika input deret angka tidak valid, maka aksi tidak dilanjutkan
+				if (!valid) return alert("Deret angka tidak valid");
+
+				// Jika input deret angka kosong, maka aksi tidak dilanjutkan
+				if (!array || !array.length) return alert("Deret angka kosong");
+
+				const splice1 = parseInt(document.getElementById("splice1").value);
+				const splice2 = parseInt(document.getElementById("splice2").value);
+				const splice3 = document.getElementById("splice3").value.split(",").map(x => x.trim()).filter(x => x !== "");
+
+				if (splice3.some(x => isNaN(parseInt(x)))) {
+					return alert("Deret angka splice salah!")
+				}
+				
+				if (splice1 < 0) return alert("Indeks mulai splice tidak boleh < 0");
+				if (splice1 > modifiedArray.length) return alert("Indeks mulai splice tidak boleh melebihi length array");
+
+				modifiedArray.splice(splice1, splice2, ...(splice3 || []));
+
+				// Update tampilan result
+				updateResult();
+			}
+
+			function join() {
+				const joinInput = document.getElementById("join").value;
+				result.value = modifiedArray.join(joinInput);
+			}
+
+			function split() {
+				const splitInput = document.getElementById("splitInput").value;
+				const separator = document.getElementById("separator").value;
+				const splitResult = document.getElementById("splitResult");
+				splitResult.value = JSON.stringify(splitInput.split(separator));
+			}
+
+			function updateResult() {
+				result.value = modifiedArray.join(", ");
+			}
+		</script>
+
+		<!-- CSS -->
+		<style>
+			body {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				flex-direction: column;
+			}
+
+			html {
+				font-family: 'Mulish', sans-serif;
+			}
+
+			.container {
+				width: 100%;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+
+
+			.form {
+				padding: 25px 20px 25px 20px; /* t r b l*/
+				border-radius: 15px;
+				box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+				display: flex;
+				flex-direction: column;
+				row-gap: 20px;
+				width: 450px;
+			}
+
+			.form-input {
+				display: flex;
+				flex-direction: column;
+				justify-content: start;
+				align-items: start;
+				width: 100%;
+			}
+
+			.form-input > * {
+				width: 100%;
+			}
+
+			.form-input label {
+				margin-bottom: 3px;
+			}
+
+			input {
+				border-color: grey;
+				border-style: solid;
+				border-width: 0.5px;
+				border-radius: 3px;
+				padding: 2px 8px 2px 8px; /* t r b l*/
+			}
+		</style>
+	</body>
+
 </html>
