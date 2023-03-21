@@ -33,7 +33,7 @@ Cara menggunakan metode array adalah dengan menggunakan tanda dot (.) contohnya 
 ```js
 var feeling = ["dag", "dig"]
 feeling.push("dug") // menambahkan nilai "dug" ke index paling belakang
-feelling.pop() // menghapus nilai pada elemen terakhir array
+feeling.pop() // menghapus nilai pada elemen terakhir array
 ```
 
 Beberapa metode array ada yang mengembalikan nilai array lama yang sudah diperbarui (array lama di-update) dengan metode tersebut , dan ada pula metode array yang mengembalikan sebuah array baru dan tidak mengubah data pada array yang lama (array baru yang serupa dengan array lama). Sifat seperti ini disebut mutable atau immutable.
