@@ -4,33 +4,36 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Input Deret Angka</title>
+  <title>Materi Array</title>
 </head>
 <br>
-  
-  <label for="deret">Input Deret Pisahkan Dengan Koma</label>
+  <h2>Materi Sort</h2>
+  <label for="deret">Input Deret Angka lalu pisahkan dengan spasi.</label>
+  <br>
+  <label for="deret">Contoh = (1 2 3 4)</label>
   <input type="text" name="inputSort" id="inputSort">
-  <input type="button" value="Submit" onclick="sort()">
+  <input type="button" value="Sort" onclick="sort()">
   <br>
 
-  <label for="deret">Hasil Sebelum Sort</label>
+  <label for="deret">Hasil sebelum Sort</label>
   <input type="text" name="deret" id="sebelum" disabled>
   <br>  
 
   <label for="deret">Hasil sesudah Sort</label>
   <input type="text" name="deret" id="sesudah" disabled>
   <br>
-  <br>
-  <label for="deret">Tambah Data</label>
+
+  <h2>Materi Push</h2>
+  <label for="deret">Tambahkan Data</label>
   <input type="text" name="push" id="push">
-  <input type="button" value="push" onclick="push()">
+  <input type="button" value="Push" onclick="push()">
   <br>
   
-  <label for="deret">Hasil sesudah push</label>
+  <label for="deret">Hasil sesudah Push</label>
   <input type="text" name="deret" id="push2" disabled>
 
   <br>
-  <br>
+  <h2>Materi Pop</h2>
 
   <label for="deret">Hapus elemen paling akhir / belakang</label>
   <input type="button" value="Pop" onclick="pop()"><br>
@@ -38,9 +41,9 @@
   <input type="text" name="pop" id="pop2" disabled> 
   
 </br>
-</br>
+<h2>Materi Unshift</h2>
 
-  <label for="deret">Tambah unshift di sebelum index</label>
+  <label for="deret">Tambahkan unshift di sebelum index</label>
   <input type="text" name="unshift" id="unshift">
   <input type="button" value="Unshift" onclick="unshift()">
   
@@ -48,9 +51,79 @@
   
   <label for="deret">Hasil sesudah unshift</label>
   <input type="text" name="unshift" id="unshift2" disabled>
-  
-  <script>
-    function sort()
+  <br>
+
+<h2>Materi Shift</h2>
+
+  <label for="deret">Menghapus index paling belakang</label>
+  <input type="button" value="Shift" onclick="shift()"><br>
+  <label for="deret">Hasil sesudah shift</label>
+  <input type="text" name="shift" id="shift2" disabled><br>
+
+<h2>Materi Slice</h2>
+
+  <label for="deret">Index awal untuk Slice<label>
+    <input type="text" name="awal" id="awal">
+    <br>
+    <label for="deret">Sampai index</label>
+    <input type="text" name="akhir" id="akhir">
+    
+    <br>
+    <label for="deret">Hasil Slice</label>
+    <input type="text" name="slice" id="slice2" disabled>
+    <input type="button" value="Slice" onclick="slice()">
+    <br>
+
+<h2>Materi Splice</h2>
+
+  <label for="index">Awal mulai Index</label>
+  <input type="number" name="index" id="index">
+  <br><br>
+
+  <label for="jum">Jumlah index yang ingin dihapus</label>
+  <input type="number" name="jumlah" id="jumlah">
+  <br><br>
+
+  <label for="indexNew">Index baru yang ingin ditambahkan (pisahkan dengan koma)</label>
+  <input type="text" name="indexNew" id="indexNew">
+  <br><br>
+
+  <label for="splice">Hasil Splice</label>
+  <input type="text" name="splice" id="splice" disabled>
+  <input type="button" value="Splice" onclick="spliceData()">
+  <br>
+
+<h2>Materi Split</h2>
+
+  <label for="deret">Masukan index yang ingin dipisah</label>
+  <input type="text" name="split" id="split"><br>
+  <label for="deret">Masukan karakter untuk patokan pemisah</label><br>
+  <label for="deret">Contoh = kelas-sepuluh (Karakter pemisahnya adalah "-")</label>
+  <input type="text" name="karakterSplit" id="karakterSplit">
+  <br>
+  <label for="deret">Pisahkan index menggunakan Split</label>
+  <input type="button" value="Split" onclick="split()"><br>
+  <label for="deret">Hasil Split</label>
+  <input type="text" name="Split" id="split2" disabled>
+  <br>
+
+<h2>Materi Join</h2>
+
+  <label for="deret">Masukan index dengan terpisah</label>
+  <input type="text" name="join" id="join"><br>
+  <label for="deret">Masukan karakter sebagai penggabung</label>
+  <input type="text" name="karakterJoin" id="karakterJoin">
+  <br>
+  <label for="deret">Gabungkan index menggunakan Join</label>
+  <input type="button" value="Join" onclick="join()"><br>
+  <label for="deret">Hasil join</label>
+  <input type="text" name="join" id="join2" disabled>
+  <br>
+</div>
+<br><br>
+
+    <script>
+      function sort()
     {
       let input = document.getElementById('inputSort').value;
       let splitInput = input.split(' ');
@@ -58,7 +131,6 @@
       let sortSplitInput = splitInput.sort();
       document.getElementById('sesudah').value = sortSplitInput;
     }
-    
     function push()
     {
       // berfungsi untuk mengambil nilai dari sebuah inputan yang mempunyai ID deret
@@ -96,7 +168,49 @@
       unshiftInput.unshift(inputUnshift);
       document.getElementById('unshift2').value = unshiftInput;
     } 
-    
+
+    function shift()
+  {
+      let input = document.getElementById('unshift2').value;
+      let shiftInput = input.split(',');
+      shiftInput.shift();
+      document.getElementById('shift2').value = shiftInput;
+  } 
+
+    function slice() 
+  {
+    let input = document.getElementById('shift2').value;
+    let splitInput = input.split(',');
+    let start = document.getElementById('awal').value;
+    let end = document.getElementById('akhir').value;
+    let sliceArray = splitInput.slice(start, end);
+    document.getElementById('slice2').value = sliceArray;
+  }
+
+    function spliceData()
+    {
+      var input = document.getElementById("shift2").value.split(",");
+      var awal = document.getElementById("index").value;
+      var jumlah = document.getElementById("jumlah").value;
+      var indexNew = document.getElementById("indexNew").value.split(",");
+      input.splice(awal, jumlah, indexNew);
+      document.getElementById("splice").value = input;''
+    }
+
+    function split()
+  {
+      let inputSplit = document.getElementById("split").value;
+      let karakterSplit = document.getElementById("karakterSplit").value;
+      let splitArray = inputSplit.split(karakterSplit)
+      document.getElementById("split2").value = splitArray;
+  }
+    function join()
+  {
+      let inputJoin = document.getElementById("join").value;
+      let karakterJoin = document.getElementById("karakterJoin").value;
+      let joinArray = inputJoin.split(" ").join(karakterJoin)
+      document.getElementById("join2").value = joinArray;
+  }
 
     </script>
 </body>
