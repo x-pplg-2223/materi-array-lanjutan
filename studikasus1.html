@@ -77,7 +77,6 @@
     {
       let input = document.getElementById('push2').value;
       let splitInput = input.split(',');
-      splitInput.sort();
       splitInput.pop();
       document.getElementById('pop2').value = splitInput;
     }
@@ -89,7 +88,7 @@
       // untuk ambil data value dari input dengan id unshift yang nantinya akan dimasukan kedalah array
       let inputUnshift = document.getElementById('unshift').value;
       // variabel untuk split / memecah string kedalam arrray yang nantinya akan di unshift variabel inputShift
-      let unshiftInput = input.split(',');
+      let unshiftInput = input.split();
       // untuk sort array unshiftInput
       unshiftInput.sort();
       // untuk meng-unshift array unshiftInput ditambahkan dengan value.. ??? valuenya adalah inputUnshift
