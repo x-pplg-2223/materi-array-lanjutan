@@ -5,7 +5,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Input Deret Angka</title>
+    <title>Input Deret Angka (Achmad Tirto Sudiro)</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ionicons@5.2.3/dist/css/ionicons.min.css" integrity="sha384-0N1hU/z1V4rzDYBWuX7VREzEYYu/On7JhOtjvVOw7yObSrsxS23+ybOcY0IMV7Zk" crossorigin="anonymous">
+
 </head>
 
 <body>
@@ -97,7 +99,8 @@ br {
 
     <br>
     <ul>
-    <button id="dark-mode-btn">Dark Mode</button>
+    <button id="dark-mode-btn">
+    <ion-icon name="moon-sharp"></ion-icon> Beralih ke Dark Mode </button>
 
     <li><label for="deret">Input Deret Pisahkan Dengan Koma</label></li>
     <input type="text" name="inputSort" id="inputSort" placeholder="contoh: a,b,c / 1,2,3">
@@ -196,6 +199,9 @@ br {
     </br>
     </br>
     </ul>
+
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <script>
 
         function sort() {
@@ -277,16 +283,16 @@ br {
             let joined = array.join(inputpisah);
             document.getElementById("join2").value = joined;
         }
-        const darkModeBtn = document.getElementById("dark-mode-btn");
-        const body = document.querySelector("body");
+            const darkModeBtn = document.getElementById("dark-mode-btn");
+            const body = document.querySelector("body");
 
-        darkModeBtn.addEventListener("click", () => {
-        body.classList.toggle("dark-mode");
-        if (body.classList.contains("dark-mode")) {
-            darkModeBtn.textContent = "Light Mode";
-        } else {
-            darkModeBtn.textContent = "Dark Mode";
-        }
+            darkModeBtn.addEventListener("click", () => {
+            body.classList.toggle("dark-mode");
+            if (body.classList.contains("dark-mode")) {
+                darkModeBtn.innerHTML = '<ion-icon name="sunny-sharp"></ion-icon> Beralih ke Light Mode ';
+            } else {
+                darkModeBtn.innerHTML = '<ion-icon name="moon-sharp"></ion-icon> Beralih ke Dark Mode ';
+            }
         });
 
     </script>
