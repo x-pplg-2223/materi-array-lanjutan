@@ -1,102 +1,211 @@
 <!DOCTYPE html>
 <br lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head></head>
   <title>Input Deret Angka</title>
-</head>
-<br>
-  
-  <label for="deret">Input Deret Pisahkan Dengan Koma</label>
+  <!--form -->
+<div id="form-content">
+  <!-- bagian awal / deret -->
+  <label for="deret">input deret pisahkan dengan koma:</label>
+  <br>
+  <label for="deret">masukan nilainya</label>
   <input type="text" name="inputSort" id="inputSort">
-  <input type="button" value="Submit" onclick="sort()">
   <br>
 
-  <label for="deret">Hasil Sebelum Sort</label>
+  <!-- bagian kedua / sort -->
+  <label for="deret">hasil sebelum Sort</label>
   <input type="text" name="deret" id="sebelum" disabled>
-  <br>  
+  <br>
 
-  <label for="deret">Hasil sesudah Sort</label>
-  <input type="text" name="deret" id="sesudah" disabled>
+  <!-- bagian kedua / sesudahnya sort -->
+  <label for="deret">hasil sesudah Sort</label>
+  <input  type="text" name="deret" id="sesudah" disabled>
+  <br>
+  <label for="deret">Click Submit! Disamping untuk nilainya</label>
+  <input type="button" value="Submit" onclick="sort()">
+
   <br>
   <br>
-  <label for="deret">Tambah Data</label>
+
+  <!-- bagian ketiga / menambah data push -->
+  <label for="deret">Tambah Data di belakang</label>
   <input type="text" name="push" id="push">
-  <input type="button" value="push" onclick="push()">
   <br>
-  
+  <!--bagian ketiga / sesudah push -->
   <label for="deret">Hasil sesudah push</label>
   <input type="text" name="deret" id="push2" disabled>
+  <input type="button" value="push" onclick="push()">
 
   <br>
   <br>
 
+  <!-- bagian keempat / bagian pop menghapus elemen pada bagian belakang -->
   <label for="deret">Hapus elemen paling akhir / belakang</label>
-  <input type="button" value="Pop" onclick="pop()"><br>
-  <label for="">Hasil sesudah pop</label>
-  <input type="text" name="pop" id="pop2" disabled> 
-  
-</br>
-</br>
+  <input type="button" value="Pop" onclick="Pop()"><br>
+  <label for="">hasil sesudah pop</label>
+  <input type="text" name="pop" id="pop2" disabled>
 
+  </br>
+  </br>
+
+  <!-- bagian keempat / bagian tambahan unshift -->
   <label for="deret">Tambah unshift di sebelum index</label>
+  <br>
+  <label for="deret">Masukan nilainya</label>
   <input type="text" name="unshift" id="unshift">
-  <input type="button" value="Unshift" onclick="unshift()">
+  <br>
+
+  <!-- bagian keempat / hasilnya sesudah unshift -->
+  <label for="deret">hasil sesudah unshift</label>
+  <input type="text" name="unshift" id="unshift2" disabled>
+  <br>
+  <label for="deret">Click disamping, untuk melihat hasilnya</label>
+  <input type="button" value="unshift" onclick="unshift()">
+  <br>
+  <br>
+
+  <!-- bagian kelima / bagian shift menambahkan elemen pada index bagian depan, -->
+  <label for="deret">hapus elemen paling awal / depan</label>
+  <input type="button" value="shift" onclick="shift()">
+  <br>
+  <label for="deret">Hasil sesudah shift</label>
+  <input type="text" name="shift" id="shift2" disabled>
   
   <br>
-  
-  <label for="deret">Hasil sesudah unshift</label>
-  <input type="text" name="unshift" id="unshift2" disabled>
-  
-  <script>
-    function sort()
-    {
-      let input = document.getElementById('inputSort').value;
-      let splitInput = input.split(' ');
-      document.getElementById('sebelum').value = splitInput;
-      let sortSplitInput = splitInput.sort();
-      document.getElementById('sesudah').value = sortSplitInput;
-    }
-    
-    function push()
-    {
-      // berfungsi untuk mengambil nilai dari sebuah inputan yang mempunyai ID deret
-      let input = document.getElementById('inputSort').value;
-      // berfungsi untuk mengambil nilai dari sebuah inputan yang mempunyai ID push
-      let addInput = document.getElementById('push').value;
-      // berfungsi untuk memecah string menjadi array
-      let splitInputs = input.split(' ');     
-      // berfungsi untuk menambah elemen kedalam array yg diambil dari deret
-      splitInputs.push(addInput);
-      document.getElementById('push2').value = splitInputs;
-      console.log(splitInputs);
-    }
-    
-    function pop()
-    {
-      let input = document.getElementById('push2').value;
-      let splitInput = input.split(',');
-      splitInput.sort();
-      splitInput.pop();
-      document.getElementById('pop2').value = splitInput;
-    }
-    
-    function unshift()
-    {
-      // untuk ambil data value dari hasil pop / input dengan ID pop2
-      let input = document.getElementById('pop2').value;
-      // untuk ambil data value dari input dengan id unshift yang nantinya akan dimasukan kedalah array
-      let inputUnshift = document.getElementById('unshift').value;
-      // variabel untuk split / memecah string kedalam arrray yang nantinya akan di unshift variabel inputShift
-      let unshiftInput = input.split(',');
-      // untuk sort array unshiftInput
-      unshiftInput.sort();
-      // untuk meng-unshift array unshiftInput ditambahkan dengan value.. ??? valuenya adalah inputUnshift
-      unshiftInput.unshift(inputUnshift);
-      document.getElementById('unshift2').value = unshiftInput;
-    } 
-    
+  <br>
+
+  <!-- bagian slice -->
+  <label for="deret">index mulai slice</label>
+  <input type="text" name="start" id="start">
+  <br>
+  <label for="deret">sampai index</label>
+  <input type="text" name="end" id="end">
+
+  <br>
+  <laber for="deret" >index akhir slice</laber>
+  <input type="text" name="slice" id="slice2" disabled>
+  <input type="button" value="slice" onclick="slice()">
+  <br><br>
+  <!-- bagian splice -->
+  <label for="index">Index yang ingin di ganti</label>
+  <input type="number" name="index" id="index">
+  <br><br>
+
+  <label for="count">jumlah elemen yang ingin dihapus</label>
+  <input type="number" nama="count" id="count">
+  <br><br>
+
+  <label for="newElements">Elemen yan baru yang ingin ditambahkan (pisahkan dengan koma)</label>
+  <input type="text" name="newElements" id="newElements">
+  <br><br>
+
+  <label for="splice">hasil setelah splice</label>
+  <input type="text" name="spilce" id="splice" disabled>
+  <input type="button" value="splice" onclick="spliceData()">
+  <br><br>
+
+  <!-- bagian kesembilan / bagian join -->
+  <label for="deret">Masukan pisah</label>
+<input type="text" name="pisah" id="pisah">
+<br>
+
+<!-- bagian kesembilan / hasilnya sudah join -->
+<label for="deret">hasil sesudah join</label>
+<input type="text" name="join" id="join2" disabled>
+<br>
+<label for="deret">Gabungkan semua elemen / join</label>
+<button onclick="joinArray()">join</button>
+</div>
+
+
+<script>
+  // bagian awal / deret
+  function sort()
+  {
+    let input = document.getElementById('inputSort').value;
+    let splitInput = input.split(' ');
+    document.getElementById('sebelum').value = splitInput;
+    let sortSplitInput = splitInput.sort();
+    document.getElementById('sesudah').value = sortSplitInput;
+  }
+
+  // bagian ketiga / menambahkan data push
+  function push()
+  {
+    // berfungsi untuk mengambil nilai dari sebuah inputan yang mempunyai ID deret
+    let input = document.getElementById('inputSort').value;
+    // berfunngsi untuk mengambil nilai dari sebuah inputan yang mempunyai ID push
+    let addInput = document.getElementById('push').value;
+    // berfungsi untuk memecah string menjadi array
+    let splitInputs = input.split(' ');
+    // berfungsi untuk menambah elemen kedalam array yang diambil dari deret
+    splitInputs.sort()
+    splitInputs.push(addInput);
+    document.getElementById('push2').value = splitInputs;
+    console.log(splitInputs);
+  }
+
+  // bagian keempat / bagian pop menghapus elemen pada bagian belakang
+  function pop()
+  {
+    let input = document.getElementById('push2').value;
+    let splitInput = input.split(',');
+    splitInput.sort();
+    splitInput.pop();
+    document.getElementById('pop2').value = splitInput;
+  }
+
+  // bagian keempat / bagian tambahkan unshift
+  function unshift()
+  {
+    // untuk ambil data value dari hasil pop / input dengan ID Pop2
+    let input = document.getElementById('pop2').value;
+    // untuk mengambil data value dari input dengan ID unshift yang nanti akan di masukan kedalam array
+    let inputUnshift = document.getElementById('unshift').value;
+    // variabel untuk split / memecah string kedalam array yang nantinya akan di unshift variabel inputShift
+    let unshiftInput = input.split(',');
+    // untuk sort array unshiftInput
+    unshift.sort();
+    // untuk meng-unnshift array unshiftInput ditambahkan dengan value...??? valuenya adalah inputUnshift
+    unshiftInput.unshift(inputUnshift);
+    document.getElementById('unshift2').value = unshiftInput;
+  }
+
+  // bagian kelima / bagian shif menambahkan elemen pada index bagian depan
+  function shif()
+  {
+    let input =document.getElementById('unshift2').value;
+    let splitInput = input.split(',')
+    splitInputs.sort();
+    splitInput.shift();
+    document.getElementById('shift2').value = splitInput;
+  }
+
+  function slice()
+  {
+    let input = documentt.getElementById('shift2').vaulue;
+    let splitInput = input.split(',')
+    let start = document.getElementById('start').value;
+    let end = document.getElementById('end').value;
+    let slicedArray = splitInput.slice(start,end);
+    document.getElementById('slice2').value = slicedArray;
+  }
+
+  function spliceData() {
+    var input = document.getElementById("slice2").value.split(",");
+    var inputIndex =  document.getElementById("index").value;
+    var count = document.getElementById("count").value;
+    var newElements = document.getElementById("newElements").value.split(",");
+    input.splice(inputIndex, count, ...newElements);
+    document.getElementById("splice").value = input;''
+  }
+
+  function joinArray() {
+    let input = document.getElementById("splice").value;
+    let inputPisah = document.getElementById("pisah").value;
+    let array = input.split(",");
+    let joined = array.join(inputPisah);
+    document.getElementById("join2").value = joined;
+  }
 
     </script>
 </body>
