@@ -6,7 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Input Deret Angka (Achmad Tirto Sudiro)</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ionicons@5.2.3/dist/css/ionicons.min.css" integrity="sha384-0N1hU/z1V4rzDYBWuX7VREzEYYu/On7JhOtjvVOw7yObSrsxS23+ybOcY0IMV7Zk" crossorigin="anonymous">
 
 </head>
 
@@ -178,17 +177,16 @@ br {
     <br><br>
   
     <label for="deret">Jumlah elemen yang ingin dihapus</label>
-    <input type="text" name="jml" id="jml" placeholder="Masukkan jumlah elemen">
+    <input type="text" name="jhapus" id="jhapus" placeholder="Masukkan jumlah elemen">
     <br><br>
   
-    <label for="elemenNew">Elemen baru yang ingin ditambahkan (pisahkan dengan koma)</label>
-    <input type="text" name="elemenNew" id="elemenNew" placeholder="Masukkan jumlah elemen">
+    <label for="deret">Elemen baru yang ingin ditambahkan (pisahkan dengan koma)</label>
+    <input type="text" name="nElemen" id="nElemen" placeholder="Masukkan jumlah elemen">
     <br><br>
   
-    <label for="splice">Hasil setelah splice</label>
+    <label for="deret">Hasil setelah splice</label>
     <input type="text" name="splice" id="splice" disabled>
     <input type="button" value="Splice" onclick="spliceData()">
-    <br><br>
 
     <br>
     <br>
@@ -275,8 +273,8 @@ br {
         function spliceData() {
             var input = document.getElementById("slice2").value.split(",");
             var awal = document.getElementById("splice2").value;
-            var jumlah = document.getElementById("jml").value;
-            var elemenn = document.getElementById("elemenNew").value.split(",");
+            var jumlah = document.getElementById("jhapus").value;
+            var elemenn = document.getElementById("nElemen").value.split(",");
             input.splice(awal, jumlah, ...elemenn);
             document.getElementById("splice").value = input;
         }
