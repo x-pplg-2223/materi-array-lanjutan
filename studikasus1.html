@@ -49,6 +49,59 @@
   <label for="deret">Hasil sesudah unshift</label>
   <input type="text" name="unshift" id="unshift2" disabled>
   
+<br>
+
+    <label for="deret">Hapus elemen paling depan</label>
+    <input type="button" value="shift" onclick="shift()"><br>
+    <label for="">Hasil sesudah shift</label>
+    <input type="text" name="shift" id="shift2" disabled>
+
+    <br>
+    <br>
+    <label for="deret">Slice</label>
+    <input type="text" name="start" id="start" placeholder="masukkan index awal">
+    <br>
+    <label for="deret">Sampai Index ke-</label>
+    <input type="text" name="end" id="end" placeholder="masukkan index terakhir">
+
+    <br>
+    <label for="deret">Hasil sesudah slice</label>
+    <input type="text" name="slice" id="slice2" disabled>
+    <input type="button" value="Slice" onclick="slice()">
+
+    <br>
+    <br>
+    <label for="deret">Splice</label>
+    <input type="text" name="splice" id="splice2" placeholder="masukkan index">
+    <br><br>
+  
+    <label for="deret">Jumlah elemen yang ingin dihapus</label>
+    <input type="text" name="jml" id="jml" placeholder="Masukkan jumlah elemen">
+    <br><br>
+  
+    <label for="elemenNew">Elemen baru yang ingin ditambahkan (pisahkan dengan koma)</label>
+    <input type="text" name="elemenNew" id="elemenNew" placeholder="Masukkan jumlah elemen">
+    <br><br>
+  
+    <label for="splice">Hasil setelah splice</label>
+    <input type="text" name="splice" id="splice" disabled>
+    <input type="button" value="Splice" onclick="spliceData()">
+    <br><br>
+
+    <br>
+    <br>
+    <label for="deret">Masukan pisah</label>
+    <input type="text" name="pisah" id="pisah" placeholder="Contoh: &, -, _">
+    <br>
+  
+    <!-- bagian kesembilan / hasilnya sesudah join -->
+    <label for="deret">Hasil sesudah join</label>
+    <input type="text" name="join" id="join2" disabled>
+    <br>
+    <label for="deret">Gabungkan semua elemen / join</label>
+    <button onclick="joinArray()">Join</button>
+    </br>
+    </br>
   <script>
     function sort()
     {
@@ -97,7 +150,36 @@
       document.getElementById('unshift2').value = unshiftInput;
     } 
     
-
+    function shift() {
+            let input = document.getElementById('unshift2').value;
+            let splitInput1 = input.split(',');
+            splitInput1.shift();
+            document.getElementById('shift2').value = splitInput1;
+        }
+     function slice() 
+        {
+            let input = document.getElementById('shift2').value;
+            let splitInput = input.split(',');
+            let start = document.getElementById('start').value;
+            let end = document.getElementById('end').value;
+            let slicedArray = splitInput.slice(start, end);
+            document.getElementById('slice2').value = slicedArray;
+        }
+      function spliceData() {
+            var input = document.getElementById("slice2").value.split(",");
+            var awal = document.getElementById("splice2").value;
+            var jumlah = document.getElementById("jml").value;
+            var elemenn = document.getElementById("elemenNew").value.split(",");
+            input.splice(awal, jumlah, ...elemenn);
+            document.getElementById("splice").value = input;''
+        }
+      function joinArray() {
+            let input = document.getElementById("splice").value;
+            let inputpisah = document.getElementById("pisah").value;
+            let array = input.split(",");
+            let joined = array.join(inputpisah);
+            document.getElementById("join2").value = joined;
+        }
     </script>
 </body>
 </html>
