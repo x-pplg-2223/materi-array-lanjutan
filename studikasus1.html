@@ -189,24 +189,22 @@
     let end = document.getElementById('end').value;
     let slicedArray = splitInput.slice(start, end);
     document.getElementById('slice2').value = slicedArray;
-  }
-
-  function spliceData() {
+    }
+    function spliceData() {
     var input = document.getElementById("slice2").value.split(",");
     var awal = document.getElementById("index").value;
     var jum = document.getElementById("jum").value;
     var elemenNew = document.getElementById("elemenNew").value.split(",");
     input.splice(awal, jum, ...elemenNew);
     document.getElementById("splice").value = input;''
-  }
-  
-  function joinArray() {
+    }
+    function joinArray() {
     let input = document.getElementById("splice").value;
     let inputpisah = document.getElementById("pisah").value;
     let array = input.split(",");
     let joined = array.join(inputpisah);
     document.getElementById("join2").value = joined;
-  }
+    }
 
     </script>
 </body>
