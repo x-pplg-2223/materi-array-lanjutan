@@ -279,10 +279,10 @@ br {
             document.getElementById('slice2').value = slicedArray;
         }
         function spliceData() {
-            var input = document.getElementById("slice2").value.split(",");
-            var awal = document.getElementById("splice2").value;
-            var jumlah = document.getElementById("jhapus").value;
-            var elemenn = document.getElementById("nElemen").value.split(",");
+            let input = document.getElementById("slice2").value.split(",");
+            let awal = document.getElementById("splice2").value;
+            let jumlah = document.getElementById("jhapus").value;
+            let elemenn = document.getElementById("nElemen").value.split(",");
             input.splice(awal, jumlah, ...elemenn);
             document.getElementById("splice").value = input;
         }
