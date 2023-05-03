@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Input Deret Angka (Achmad Tirto Sudiro)</title>
+
+</head>
+
+<body>
+
+    <style>
+
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    background-color: white;
+    font-family: sans-serif;
+    transition: .5s;
+    color: black;
+}
+/* Style untuk tombol light mode */
+button {
+    background-color: white;
+    right: 50px;
+    color: black;
+    border: 1px solid black;
+    transition: .5s;
+    position: fixed;
+}
+
+/* Style untuk tombol dark mode */
+body.dark-mode button {
+    background-color: black;
+    color: white;
+    border: 1px solid white;
+    transition: .5s;
+    background-color: #fbff00;
+    border: 2px solid #000;
+    color: black;
+}
+body.dark-mode button:hover{
+    color: white;
+    background-color: aqua;
+    border-color: greenyellow;
+}
+/* Style untuk mengubah tampilan halaman saat dark mode diaktifkan */
+body.dark-mode {
+    background-color: black;
+    color: white;
+    transition: .5s;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+input[type="text"], 
+input[type="button"],
+button {
+    display: inline-block;
+    margin-bottom: 10px;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid gray;
+    background-color: transparent;
+    color: black;
+}
+
+input[type="text"] {
+    width: 230px;
+    background-color: white;
+}
+input[type="text"]:hover{
+    transform: scale(1.025);
+    transition: 0.5s;
+}
+
+input[type="button"],
+button {
+    border: 2px solid #000;
+    transition: all 0.3s ease-in-out ;
+    background-color: #fbff00;
+    color: black;
+    cursor: pointer;
+}
+button:hover,
+input[type="button"]:hover {
+    border: 2px solid #000;
+    transform: scale(0.95);
+    transition: all 0.3s ease-in-out ;
+    background-color: aqua;
+    border-color: greenyellow;
+    color: white;
+    transition: .55s;
+    cursor: pointer;
+}
+input[type="text"][disabled] {
+    background-color: #9e9e9e;
+    cursor: not-allowed;
+    text-decoration-color: #000;
+}
+br {
+    margin-bottom: 10px;
+}
+    </style>
+
+    <br>
+    <ul>
+        <!-- Bagian fitur dark mode -->
+    <button id="dark-mode-btn">
+    <ion-icon name="moon-sharp"></ion-icon> Beralih ke Dark Mode </button>
+
+    <!-- Bagian sort -->
+    <li><label for="deret">Input Deret Pisahkan Dengan Koma</label></li>
+    <input type="text" name="inputSort" id="inputSort" placeholder="contoh: a,b,c / 1,2,3">
+    <input type="button" value="Submit" onclick="sort()">
+    <br>
+
+    <label for="deret">Hasil Sebelum Sort</label>
+    <input type="text" name="deret" id="sebelum" disabled>
+    <br>
+
+    <label for="deret">Hasil sesudah Sort</label>
+    <input type="text" name="deret" id="sesudah" disabled>
+
+    <br>
+    <br>
+
+    <!-- Bagian push -->
+    <li><label for="deret">Tambah Data</label></li>
+    <input type="text" name="push" id="push" placeholder="contoh: d atau 4">
+    <input type="button" value="push" onclick="push()">
+    <br>
+
+    <label for="deret">Hasil sesudah push</label>
+    <input type="text" name="deret" id="push2" disabled>
+
+    <br>
+    <br>
+
+    <!-- Bagian pop -->
+    <li><label for="deret">Hapus elemen paling akhir / belakang</label></li>
+    <input type="button" value="Pop" onclick="pop()"><br>
+    <label for="">Hasil sesudah pop</label>
+    <input type="text" name="pop" id="pop2" disabled>
+
+    </br>
+    </br>
+
+    <!-- Bagian unshift -->
+    <li><label for="deret">Tambah unshift sebelum index 0</label></li>
+    <input type="text" name="unshift" id="unshift" placeholder="contoh: 0 atau a">
+    <input type="button" value="Unshift" onclick="unshift()">
+
+    <br>
+
+    <label for="deret">Hasil sesudah unshift</label>
+    <input type="text" name="unshift" id="unshift2" disabled>
+
+    <br>
+    <br>
+
+    <!-- Bagian shift -->
+    <li><label for="deret">Hapus elemen paling depan</label></li>
+    <input type="button" value="shift" onclick="shift()"><br>
+    <label for="">Hasil sesudah shift</label>
+    <input type="text" name="shift" id="shift2" disabled>
+
+    <br>
+    <br>
+
+    <!-- Bagian slice -->
+    <li><label for="deret">Slice</label></li>
+    <input type="text" name="start" id="start" placeholder="masukkan index awal">
+    <br>
+    <label for="deret">Sampai Index ke-</label>
+    <input type="text" name="end" id="end" placeholder="masukkan index terakhir">
+
+    <br>
+    <label for="deret">Hasil sesudah slice</label>
+    <input type="text" name="slice" id="slice2" disabled>
+    <input type="button" value="Slice" onclick="slice()">
+
+    <br>
+    <br>
+
+    <!-- Bagian splice -->
+    <li><label for="deret">Splice</label></li>
+    <input type="text" name="splice" id="splice2" placeholder="masukkan index">
+    <br><br>
+  
+    <label for="deret">Jumlah elemen yang ingin dihapus</label>
+    <input type="text" name="jhapus" id="jhapus" placeholder="Masukkan jumlah elemen">
+    <br><br>
+  
+    <label for="deret">Elemen baru yang ingin ditambahkan (pisahkan dengan koma)</label>
+    <input type="text" name="nElemen" id="nElemen" placeholder="Masukkan jumlah elemen">
+    <br><br>
+  
+    <label for="deret">Hasil setelah splice</label>
+    <input type="text" name="splice" id="splice" disabled>
+    <input type="button" value="Splice" onclick="spliceData()">
+
+    <br>
+    <br>
+
+    <!-- Bagian join -->
+    <li><label for="deret">Masukan elemen pemisah (opsional)</label></li>
+    <input type="text" name="pisah" id="pisah" placeholder="Contoh: &, -, _">
+    <br><br>
+  
+    <label for="deret">Hasil sesudah join</label>
+    <input type="text" name="join" id="join2" disabled>
+    <br>
+    <label for="deret">Gabungkan semua elemen / join</label>
+    <input type="button" value="Join" onclick="joinArray()">
+    </br>
+    </br>
+    </ul>
+
+    <!-- Installation Library ionicons -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script>
+
+        function sort() {
+             // Mengambil nilai input dari elemen HTML dengan id inputSort
+            let input = document.getElementById('inputSort').value;
+             // Memecah nilai 'input' menjadi array dengan memisahkan nilai-nailai berdasarkan koma (',')
+            let splitInput = input.split(',');
+             // Menetapkan nilai splitInput sebagai nilai dari elemen HTML dengan id 'sebelum' untuk menunjukkan nilai input sebelum diurutkan.
+            document.getElementById('sebelum').value = splitInput;
+
+            // Mengurutkan nilai-nilai dalam array splitInput & menyimpan hasilnya di variabel sortSplitInput
+            let sortSplitInput = splitInput.sort(function(a, b) {
+                // Memeriksa apakah nilai 'a' dan 'b' bukan angka
+                if (isNaN(a) || isNaN(b)) {
+                // Mengembalikan hasil dari membandingkan dua nilai string a dan b menggunakan metode localeCompare
+                return a.localeCompare(b);
+                } else {
+                // Mengembalikan hasil pengurangan antara dua nilai angka 'a' dan 'b'
+                return a - b;
+                }
+            });
+            // Menetapkan nilai sortSplitInput sebagai nilai elemen HTML dengan id 'sesudah' untuk menunjukkan nilai input setelah diurutkan.
+            document.getElementById('sesudah').value = sortSplitInput;
+            }
+
+        function push() {
+            // berfungsi untuk mengambil nilai dari sebuah inputan yang mempunyai ID deret
+            let input = document.getElementById('sesudah').value;
+            // berfungsi untuk mengambil nilai dari sebuah inputan yang mempunyai ID push
+            let addInput = document.getElementById('push').value;
+            // berfungsi untuk memecah string menjadi array
+            let splitInputs = input.split(',');
+            // berfungsi untuk menambah elemen kedalam array yg diambil dari deret
+            splitInputs.push(addInput);
+            document.getElementById('push2').value = splitInputs;
+        }
+
+        function pop() {
+            // Mengambil nilai input dari elemen HTML dengan id 'push2'
+            let input = document.getElementById('push2').value;
+             // Memecah nilai 'input' menjadi array dengan memisahkan nilai-nailainya berdasarkan koma (',')
+            let splitInput = input.split(',');
+            // Menghapus elemen terakhir dari array 'splitInput' dengan menggunakan metode 'pop()'
+            splitInput.pop();
+            // Menetapkan nilai 'splitInput' sebagai nilai dari elemen HTML dengan id 'pop2' untuk menunjukkan nilai array setelah elemen terakhir dihapus
+            document.getElementById('pop2').value = splitInput;
+        }
+
+        function unshift() {
+            // untuk ambil data value dari hasil pop / input dengan ID pop2
+            let input = document.getElementById('pop2').value;
+            // untuk ambil data value dari input dengan id unshift yang nantinya akan dimasukan kedalam array
+            let inputUnshift = document.getElementById('unshift').value;
+            // variabel untuk split / memecah string kedalam arrray yang nantinya akan di unshift variabel inputShift
+            let unshiftInput = input.split();
+            // untuk sort array unshiftInput
+            unshiftInput.sort();
+            // untuk meng-unshift array unshiftInput ditambahkan dengan value.. ??? valuenya adalah inputUnshift
+            unshiftInput.unshift(inputUnshift);
+            document.getElementById('unshift2').value = unshiftInput;
+        }
+
+        function shift() {
+            // Mengambil nilai input dari elemen HTML dengan id 'unshift2'
+            let input = document.getElementById('unshift2').value;
+            // Memecah nilai 'input' menjadi array dengan memisahkan nilai-nailainya berdasarkan koma (',')
+            let splitInput1 = input.split(',');
+            // Menghapus elemen pertama dari array 'splitInput1' dengan menggunakan metode 'shift()'
+            splitInput1.shift();
+            // Menetapkan nilai 'splitInput1' sebagai nilai dari elemen HTML dengan ID 'shift2' untuk menunjukkan nilai array setelah elemen pertama dihapus
+            document.getElementById('shift2').value = splitInput1;
+        }
+
+        function slice() 
+        {
+            // Mengambil nilai input dari elemen HTML dengan id 'shift2'
+            let input = document.getElementById('shift2').value;
+            // Memecah nilai 'input' menjadi array dengan memisahkan nilai-nailainya berdasarkan koma (',')
+            let splitInput = input.split(',');
+            // Mengambil nilai 'start' dari elemen HTML dengan id 'start'
+            let start = document.getElementById('start').value;
+            // Mengambil nilai 'end' dari elemen HTML dengan id 'end'
+            let end = document.getElementById('end').value;
+            // Memotong array 'splitInput' dari index 'start' hingga index sebelum 'end' menggunakan metode 'slice()''
+            let slicedArray = splitInput.slice(start, end);
+            // Menetapkan nilai 'slicedArray' sebagai nilai dari elemen HTML dengan id 'slice2' untuk menunjukkan nilai array yang telah dipotong
+            document.getElementById('slice2').value = slicedArray;
+        }
+
+        function spliceData() {
+            // Mengambil nilai input dari elemen HTML dengan id 'slice2' dan memecah nilainya menjadi array dengan memisahkan nilai-nailainya berdasarkan koma (',')
+            let input = document.getElementById("slice2").value.split(",");
+            // Mengambil nilai 'awal' dari elemen HTML dengan id'splice2'
+            let awal = document.getElementById("splice2").value;
+            // Mengambil nilai 'jumlah' dari elemen HTML dengan id 'jhapus'
+            let jumlah = document.getElementById("jhapus").value;
+            // Mengambil nilai 'elemenn' dari elemen HTML dengan id 'nElemen' dan memecah nilainya menjadi array dengan memisahkan nilai-nailainya berdasarkan koma (',')
+            let elemenn = document.getElementById("nElemen").value.split(",");
+            // Menghapus dan menambahkan elemen-elemen baru ke dalam array 'input' menggunakan metode 'splice()'
+            input.splice(awal, jumlah, ...elemenn);
+            // Menetapkan nilai 'input' sebagai nilai dari elemen HTML dengan id 'splice' untuk menunjukkan nilai array yang telah dimodifikasi
+            document.getElementById("splice").value = input;
+        }
+
+        function joinArray() {
+            //mengambil nilai dari elemen dengan id 'splice' dan menyimpannya dalam variabel input
+            let input = document.getElementById("splice").value;
+            //mengambil nilai dari elemen dengan id 'pisah' dan menyimpannya di variabel inputpisah
+            let inputpisah = document.getElementById("pisah").value;
+            //membuat array baru dengan memisahkan nilai variabel input menggunakan koma sebagai pemisah dan menyimpannya dalam variabel array
+            let array = input.split(",");
+            //menggabungkan nilai dari array dengan menggunakan inputpisah sebagai pemisah dan disimpan didalam variabel joined
+            let joined = array.join(inputpisah);
+            //menampilkan nilai variabel joined pada elemen dengan id 'join2'
+            document.getElementById("join2").value = joined;
+        }
+            //mengambil elemen HTML dengan id 'dark-mode-btn' dan menyimpannya dalam variabel darkModeBtn
+            const darkModeBtn = document.getElementById("dark-mode-btn");
+            //mengambil elemen HTML <body> dan menyimpannya dalam variabel body
+            const body = document.querySelector("body");
+
+            //menambahkan event listener pada tombol darkModeBtn ketika diklik, dan menjalankan fungsi callback
+            darkModeBtn.addEventListener("click", () => {
+            //menambah atau menghapus kelas 'dark-mode' pada elemen body, tergantung apakah sudah ada atau belum
+            body.classList.toggle("dark-mode");
+            //jika kelas 'dark-mode' ada pada elemen body
+            if (body.classList.contains("dark-mode")) {
+                //ubah teks pada tombol menjadi "Beralih ke Light Mode" dan ubah icon menjadi matahari
+                darkModeBtn.innerHTML = '<ion-icon name="sunny-sharp"></ion-icon> Beralih ke Light Mode ';
+                //jika kelas 'dark-mode' tidak ada / mode gelap tidak aktif pada elemen body, maka...
+            } else {
+                //ubah teks pada tombol menjadi "Beralih ke Dark Mode" dan ubah icon menjadi bulan
+                darkModeBtn.innerHTML = '<ion-icon name="moon-sharp"></ion-icon> Beralih ke Dark Mode ';
+            }
+        });
+
+    </script>
+</body>
+</html>
